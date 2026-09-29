@@ -53,11 +53,10 @@ Mathematical Foundations of AI Credit Strategy.pdf
 Context and Conversation with AI as Guidance.docx
 Context and Conversation with AI as Guidance.txt
 
-# Datasets & Serialized Model Artifacts (Ignored for public repo compliance)
-data/*
-!data/.gitkeep
-saved_models/*
-!saved_models/.gitkeep
+# Raw Datasets & Bulky Downloads (Ignored for public repo compliance)
+data/*.zip
+data/*.xls
+data/real_credit_card_clients.parquet
 
 # IDE & Editor Local Files
 .idea/

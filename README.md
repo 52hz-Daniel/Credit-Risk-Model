@@ -131,15 +131,33 @@ python3 models/predictive_xgb.py
 python3 tests/verify_pipeline.py
 ```
 
-### 4. Launch the Executive Dashboard
+### 4. Launch the Executive Dashboard Locally
 ```bash
 streamlit run app/main_dashboard.py
 ```
-Open your browser at `http://localhost:8501` to view:
-* **Model Evaluation**: ROC, PR, and Reliability diagrams.
-* **Macro Regimes & Stress Testing**: Real-time stress shock simulation sliders.
-* **Feature Information Gain**: Shannon entropy feature rankings.
-* **OSFI E-23 Explainability**: Interactive SHAP waterfall charts for any audited customer.
+Open your browser at `http://localhost:8501` to view all 6 interactive tabs:
+* **Tab 1: Model Evaluation**: Head-to-head ROC, PR, and Brier reliability calibration diagrams comparing Customer-Only vs. Macro-Aware XGBoost.
+* **Tab 2: Macro Regimes & Dynamic Stress Testing**: Real Bank of Canada and FRED series with live macroeconomic shock sliders.
+* **Tab 3: Information Gain & Shannon Entropy**: Model-agnostic feature screening ranking delinquency velocity over demographics.
+* **Tab 4: OSFI E-23 Explainability**: Interactive SHAP waterfall plots for any selected customer to generate adverse-action notices.
+* **Tab 5: Causal AI Intervention (X-Learner Uplift)**: Multi-arm CATE counterfactual comparison ($Y(0), Y(1), Y(2)$) and optimal prescriptive matrix.
+* **Tab 6: Portfolio ROI Simulation (24-Month ABM)**: 24-month Mesa agent-based credit cycle simulation comparing cumulative defaults and net margin.
+
+---
+
+## 🌐 Free Live Cloud Deployment (Streamlit Community Cloud)
+
+This repository is ready for **1-click free hosting** on [Streamlit Community Cloud](https://share.streamlit.io):
+
+1. Go to [share.streamlit.io](https://share.streamlit.io) and log in with your GitHub account.
+2. Click **"Create app"** (or **"New app"**).
+3. Fill in the exact deployment parameters:
+   * **Repository**: `52hz-Daniel/Credit-Risk-Model`
+   * **Branch**: `main`
+   * **Main file path**: `app/main_dashboard.py`
+4. Click **Deploy!**
+
+The cloud server will automatically install dependencies from `requirements.txt` and launch the interactive dashboard on a public URL.
 
 ---
 
@@ -148,8 +166,10 @@ Open your browser at `http://localhost:8501` to view:
 * **Federal Reserve SR 11-7 / OCC 2011-12**: Guidance on Model Risk Management.
 * **Hamilton, J.D. (1989)**: *"A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle."* Econometrica.
 * **Lundberg, S.M. & Lee, S.-I. (2017)**: *"A Unified Approach to Interpreting Model Predictions."* NeurIPS.
+* **Künzel, S.R., et al. (2019)**: *"Metalearners for estimating heterogeneous treatment effects using machine learning."* PNAS.
 
 ---
 
 ## 📄 License
 This project is licensed under the [MIT License](LICENSE).
+

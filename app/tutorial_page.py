@@ -11,6 +11,29 @@ def render_tutorial_page():
     Designed for 1st/2nd year undergrad STEM students with an accessible tutor tone.
     Strictly zero decorative emojis; aligned with the EQUITY-TWIN institutional design.
     """
+    # CSS Contrast & Typography Reset
+    st.markdown("""
+    <style>
+        .stApp, [data-testid="stAppViewContainer"], [data-testid="stMarkdownContainer"] {
+            color: #0F172A !important;
+        }
+        [data-testid="stMarkdownContainer"] p,
+        [data-testid="stMarkdownContainer"] span,
+        [data-testid="stMarkdownContainer"] li,
+        [data-testid="stMarkdownContainer"] div,
+        [data-testid="stMarkdownContainer"] h1,
+        [data-testid="stMarkdownContainer"] h2,
+        [data-testid="stMarkdownContainer"] h3,
+        [data-testid="stMarkdownContainer"] h4,
+        p, span, li, label, div {
+            color: #0F172A !important;
+        }
+        .katex, .katex-display, .katex .mathnormal, .katex .mord, .katex .mrel, .katex .mbin, .katex .mop {
+            color: #0F172A !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
     # Header & Tutor Introduction
     st.markdown("""
     <div style="background-color: #FFFFFF; padding: 28px; border-radius: 8px; border: 1px solid #E2E8F0; margin-bottom: 24px;">
@@ -120,17 +143,22 @@ def render_tutorial_page():
     col_m1, col_m2 = st.columns([3, 2])
     with col_m1:
         st.markdown("""
-        ```mermaid
-        stateDiagram-v2
-            direction LR
-            State0: State 0 (Expansion Regime)
-            State1: State 1 (Contraction Regime)
-            State0 --> State0: p00 = 0.92 (Cycle Persistence)
-            State0 --> State1: p01 = 0.08 (Macro Shock)
-            State1 --> State1: p11 = 0.85 (Prolonged Recession)
-            State1 --> State0: p10 = 0.15 (Economic Recovery)
-        ```
-        """)
+        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 8px;">2-STATE MARKOV TRANSITION PROCESS</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
+                    <div style="font-weight: 600; font-size: 12px; color: #0F172A;">State 0: Expansion Regime</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #006C4A; margin-top: 4px;">p00 = 0.92 (Persistence)</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BA1A1A;">p01 = 0.08 (Macro Shock)</div>
+                </div>
+                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
+                    <div style="font-weight: 600; font-size: 12px; color: #0F172A;">State 1: Contraction Regime</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BA1A1A; margin-top: 4px;">p11 = 0.85 (Prolonged Stress)</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #006C4A;">p10 = 0.15 (Economic Recovery)</div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
     with col_m2:
         st.markdown("""
         <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 14px; border-radius: 4px;">
@@ -328,15 +356,28 @@ def render_tutorial_page():
     """)
 
     st.markdown("""
-    ```mermaid
-    flowchart TD
-        S1["Stage 1: Base Outcome Models<br/>Train mu_0(x) on Control and mu_a(x) on Treatment Arm a"]
-        S2["Stage 2: Counterfactual Imputation<br/>D_a = Y_a - mu_0(X_a) and D_0 = mu_a(X_0) - Y_0"]
-        S3["Stage 3: Second-Stage Treatment Effect Models<br/>Fit tau_a(x) on Treated and tau_0(x) on Control"]
-        S4["Stage 4: Propensity Score Weighting<br/>tau_a,0(x) = e(x) tau_0(x) + (1 - e(x)) tau_a(x)"]
-        S1 --> S2 --> S3 --> S4
-    ```
-    """)
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 16px; margin: 12px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 10px;">MULTI-ARM X-LEARNER 4-STAGE ESTIMATION PIPELINE</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #004AC6;">STAGE 01: BASE MODELS</div>
+                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Train outcome estimators &mu;<sub>0</sub>(x) on Control and &mu;<sub>a</sub>(x) on Treatment Arm a</div>
+            </div>
+            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #004AC6;">STAGE 02: IMPUTATION</div>
+                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Impute counterfactual effects: D<sub>a</sub> = Y<sub>a</sub> - &mu;<sub>0</sub>(X<sub>a</sub>) and D<sub>0</sub> = &mu;<sub>a</sub>(X<sub>0</sub>) - Y<sub>0</sub></div>
+            </div>
+            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #004AC6;">STAGE 03: EFFECT MODELS</div>
+                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Fit second-stage regressors &tau;<sub>a</sub>(x) on Treated and &tau;<sub>0</sub>(x) on Control</div>
+            </div>
+            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #006C4A;">STAGE 04: PROPENSITY CATE</div>
+                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Weight by propensity: &tau;<sub>a,0</sub>(x) = e(x)&tau;<sub>0</sub>(x) + (1 - e(x))&tau;<sub>a</sub>(x)</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.write("""
     **Empirical Findings on N=30,000 Master Dataset**:

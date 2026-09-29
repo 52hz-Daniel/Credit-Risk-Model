@@ -40,13 +40,61 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
     
-    html, body, [class*="css"] {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        color: #0F172A;
+    /* Primary Layout & Background */
+    .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+        background-color: #F8FAFC !important;
+        color: #0F172A !important;
+    }
+
+    [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E2E8F0 !important;
     }
     
-    .stApp {
-        background-color: #F8FAFC;
+    /* Universal Typography Reset with !important */
+    [data-testid="stMarkdownContainer"],
+    [data-testid="stMarkdownContainer"] p,
+    [data-testid="stMarkdownContainer"] span,
+    [data-testid="stMarkdownContainer"] div,
+    [data-testid="stMarkdownContainer"] li,
+    [data-testid="stMarkdownContainer"] ol,
+    [data-testid="stMarkdownContainer"] ul,
+    .stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown div,
+    p, span, label, li, td, th {
+        color: #0F172A !important;
+        font-family: 'Inter', sans-serif !important;
+    }
+
+    [data-testid="stMarkdownContainer"] h1,
+    [data-testid="stMarkdownContainer"] h2,
+    [data-testid="stMarkdownContainer"] h3,
+    [data-testid="stMarkdownContainer"] h4,
+    h1, h2, h3, h4 {
+        color: #0F172A !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 700 !important;
+    }
+
+    [data-testid="stMarkdownContainer"] strong,
+    [data-testid="stMarkdownContainer"] b {
+        color: #0F172A !important;
+        font-weight: 700 !important;
+    }
+
+    /* LaTeX / KaTeX math equations contrast */
+    .katex, .katex-display, .katex .mathnormal, .katex .mord, .katex .mrel, .katex .mbin, .katex .mop {
+        color: #0F172A !important;
+    }
+
+    /* Inline code blocks */
+    [data-testid="stMarkdownContainer"] code:not([class*="language-"]) {
+        color: #004AC6 !important;
+        background-color: #EEF2F6 !important;
+        border: 1px solid #CBD5E1 !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+        font-family: 'JetBrains Mono', monospace !important;
+        font-size: 0.9em !important;
     }
     
     /* Top Header Bar */

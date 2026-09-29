@@ -1,0 +1,66 @@
+# ==============================================================================
+# Git Ignore Configuration for AI Credit Risk & Macro Regime Repository
+# ==============================================================================
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.code-workspace
+
+# Python Bytecode and Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Reference Folders & External Git Clones (Private / Redundant)
+Research Reference/
+Reference Git Repo/
+tools/
+
+# Internal Agent Coordination & Planning Files (Private Specifications)
+AGENTS.md
+Interface Contract
+AI Retail Credit Strategy Research Plan.md
+Master Project Plan.md
+Master Project Plan.pdf
+Mathematical Foundations of AI Credit Strategy.md
+Mathematical Foundations of AI Credit Strategy.pdf
+Context and Conversation with AI as Guidance.docx
+Context and Conversation with AI as Guidance.txt
+
+# Datasets & Serialized Model Artifacts (Ignored for public repo compliance)
+data/*
+!data/.gitkeep
+saved_models/*
+!saved_models/.gitkeep
+
+# IDE & Editor Local Files
+.idea/
+.vscode/
+*.swp
+*.swo

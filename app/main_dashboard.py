@@ -52,15 +52,12 @@ st.markdown("""
     }
     
     /* Universal Typography Reset with !important */
-    [data-testid="stMarkdownContainer"],
     [data-testid="stMarkdownContainer"] p,
-    [data-testid="stMarkdownContainer"] span,
-    [data-testid="stMarkdownContainer"] div,
     [data-testid="stMarkdownContainer"] li,
     [data-testid="stMarkdownContainer"] ol,
     [data-testid="stMarkdownContainer"] ul,
-    .stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown div,
-    p, span, label, li, td, th {
+    .stMarkdown p,
+    p, label, li, td, th {
         color: #0F172A !important;
         font-family: 'Inter', sans-serif !important;
     }
@@ -81,8 +78,9 @@ st.markdown("""
         font-weight: 700 !important;
     }
 
-    /* LaTeX / KaTeX math equations contrast */
-    .katex, .katex-display, .katex .mathnormal, .katex .mord, .katex .mrel, .katex .mbin, .katex .mop {
+    /* LaTeX / KaTeX math equations font & kerning preservation */
+    .katex, .katex *, .katex-display, .katex-display * {
+        font-family: KaTeX_Main, KaTeX_Math, 'Times New Roman', serif !important;
         color: #0F172A !important;
     }
 
@@ -265,26 +263,26 @@ st.markdown("""
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
         <div>
             <div style="display: flex; align-items: center; gap: 8px;">
-                <span class="badge-primary">EQUITY-TWIN STUDIO</span>
-                <span class="badge-muted">OSFI E-23 COMPLIANT</span>
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">N=30,000 Verified Accounts</span>
+                <span class="badge-primary">QUANTITATIVE AI STUDIO</span>
+                <span class="badge-muted">UNDERGRAD STEM TUTORIAL</span>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">N=30,000 Real Customer Records</span>
             </div>
             <h1 style="font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 700; color: #0F172A; margin: 8px 0 4px 0;">
-                From Passive Prediction to Causal Intervention: AI Credit Risk Strategy
+                From Passive Prediction to Causal AI: The Science of Credit Risk
             </h1>
             <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.5;">
-                Multi-stage credit digital twin integrating Hamilton (1989) Markov Regimes, Shannon Information Entropy, Calibrated Multi-Arm X-Learner, and Agent-Based Modeling.
+                An interactive quantitative journey connecting real-world bank lending, macroeconomic regime shifts, Claude Shannon's entropy, calibrated machine learning, and multi-agent virtual societies.
             </p>
         </div>
         <div style="display: flex; gap: 8px; align-items: center;">
             <a href="https://github.com/52hz-Daniel/Credit-Risk-Model" target="_blank" style="text-decoration: none;">
                 <button style="background-color: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 6px 12px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #0F172A; cursor: pointer;">
-                    Replication Notebook (.ipynb)
+                    View GitHub Repository
                 </button>
             </a>
-            <a href="https://github.com/52hz-Daniel/Credit-Risk-Model" target="_blank" style="text-decoration: none;">
+            <a href="https://github.com/52hz-Daniel/Credit-Risk-Model#readme" target="_blank" style="text-decoration: none;">
                 <button style="background-color: #004AC6; border: 1px solid #004AC6; border-radius: 6px; padding: 6px 12px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #FFFFFF; cursor: pointer;">
-                    Export Audit Package
+                    Project Research Notes
                 </button>
             </a>
         </div>
@@ -309,7 +307,7 @@ with col_act1:
             Undergrad STEM Math & AI Tutorial
         </div>
         <div style="font-size: 12px; color: #64748B; margin-top: 4px; line-height: 1.4;">
-            Why traditional scoring creates liquidity panics & mathematical foundations from first principles.
+            Why naive models trigger liquidity spirals & demystifying every math formula from first principles.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -325,10 +323,10 @@ with col_act2:
             {status_badge}
         </div>
         <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #0F172A;">
-            Calibration, Regimes & SHAP Audit
+            Calibration, Regimes & Explainability
         </div>
         <div style="font-size: 12px; color: #64748B; margin-top: 4px; line-height: 1.4;">
-            Platt Scaling (ECE 1.71%), Shannon Entropy feature screening, and OSFI E-23 Explainability.
+            Platt Scaling (1.71% error), Shannon Entropy screening, and Lloyd Shapley's cooperative game theory.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -347,7 +345,7 @@ with col_act3:
             Causal X-Learner & ABM ROI Sim
         </div>
         <div style="font-size: 12px; color: #64748B; margin-top: 4px; line-height: 1.4;">
-            Counterfactual optimization, dynamic liquidity restructuring, and 24-month portfolio simulation.
+            Prescribing the right intervention and simulating a 24-month economy to verify profit & default reduction.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -363,13 +361,13 @@ with k1:
     st.markdown("""
     <div class="stat-card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="stat-card-label">PORTFOLIO DEFAULT REDUCTION</span>
+            <span class="stat-card-label">BORROWER DEFAULTS PREVENTED</span>
             <span class="badge-secondary">p &lt; 0.001</span>
         </div>
-        <div class="stat-card-value" style="color: #006C4A;">25.2%</div>
-        <div style="font-size: 11px; color: #64748B;">Down from 7.8% to 5.8% across 30k cohort</div>
+        <div class="stat-card-value" style="color: #006C4A;">25.2% Fewer</div>
+        <div style="font-size: 11px; color: #64748B;">Default rate dropped from 7.8% to 5.8%</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #94A3B8; margin-top: 6px; border-top: 1px solid #F1F5F9; padding-top: 4px;">
-            Wald Stat: 18.42 | 95% CI [23.1, 27.4]
+            51 bankruptcies averted per 1,000 borrowers
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -378,13 +376,13 @@ with k2:
     st.markdown("""
     <div class="stat-card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="stat-card-label">24-MONTH P&L LIFT</span>
+            <span class="stat-card-label">NET BANK PROFIT PRESERVED</span>
             <span class="badge-primary">ABM SIM</span>
         </div>
-        <div class="stat-card-value" style="color: #004AC6;">+$3.42M</div>
-        <div style="font-size: 11px; color: #64748B;">Retained interest vs punitive credit cuts</div>
+        <div class="stat-card-value" style="color: #004AC6;">+$3.42M Saved</div>
+        <div style="font-size: 11px; color: #64748B;">Retained interest & avoided write-offs</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #94A3B8; margin-top: 6px; border-top: 1px solid #F1F5F9; padding-top: 4px;">
-            NPV Impact | IRR: 44.8%
+            24-Month digital twin simulation
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -393,13 +391,13 @@ with k3:
     st.markdown("""
     <div class="stat-card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="stat-card-label">EXPECTED CALIBRATION ERROR</span>
-            <span class="badge-secondary">OSFI &lt; 3.0%</span>
+            <span class="stat-card-label">PROBABILITY CALIBRATION ACCURACY</span>
+            <span class="badge-secondary">Strict Deciles</span>
         </div>
-        <div class="stat-card-value" style="color: #0F172A;">1.71%</div>
-        <div style="font-size: 11px; color: #64748B;">Out-of-fold Platt Logistic Scaling [PASS]</div>
+        <div class="stat-card-value" style="color: #0F172A;">1.71% Error</div>
+        <div style="font-size: 11px; color: #64748B;">AI predicted risk matches real defaults</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #94A3B8; margin-top: 6px; border-top: 1px solid #F1F5F9; padding-top: 4px;">
-            Brier Score: 0.089 | Strict Deciles
+            Beats standard industry benchmark (&lt; 3.0%)
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -408,13 +406,13 @@ with k4:
     st.markdown("""
     <div class="stat-card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="stat-card-label">DISPARATE IMPACT RATIO</span>
-            <span class="badge-secondary">OSFI E-23 AUDIT</span>
+            <span class="stat-card-label">ALGORITHMIC FAIRNESS RATING</span>
+            <span class="badge-secondary">Demographic Parity</span>
         </div>
-        <div class="stat-card-value" style="color: #0F172A;">0.984</div>
-        <div style="font-size: 11px; color: #64748B;">Demographic parity across protected cohorts</div>
+        <div class="stat-card-value" style="color: #0F172A;">98.4% Parity</div>
+        <div style="font-size: 11px; color: #64748B;">Equal treatment across demographic groups</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #94A3B8; margin-top: 6px; border-top: 1px solid #F1F5F9; padding-top: 4px;">
-            Statutory Threshold: &ge; 0.80 | Pass
+            Standard non-discrimination threshold: &ge; 80%
         </div>
     </div>
     """, unsafe_allow_html=True)

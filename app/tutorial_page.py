@@ -5,485 +5,507 @@ import plotly.graph_objects as go
 
 def render_tutorial_page():
     """
-    Renders the Undergrad STEM Tutorial Page:
-    Academic, institutional quantitative finance curriculum bridging intuition,
-    mathematical proofs, and production code from first principles.
-    Designed for 1st/2nd year undergrad STEM students with an accessible tutor tone.
-    Strictly zero decorative emojis; aligned with the EQUITY-TWIN institutional design.
+    Undergraduate STEM Educational Masterclass:
+    Explains the entire AI Credit Risk Strategy project from first principles.
+    Target audience: 1st/2nd year undergraduate STEM students.
+    Focuses on intuitive storytelling, demystifying every term and formula,
+    and explaining exactly WHY each mathematical piece exists.
     """
-    # CSS Contrast & Typography Reset
-    st.markdown("""
-    <style>
-        .stApp, [data-testid="stAppViewContainer"], [data-testid="stMarkdownContainer"] {
-            color: #0F172A !important;
-        }
-        [data-testid="stMarkdownContainer"] p,
-        [data-testid="stMarkdownContainer"] span,
-        [data-testid="stMarkdownContainer"] li,
-        [data-testid="stMarkdownContainer"] div,
-        [data-testid="stMarkdownContainer"] h1,
-        [data-testid="stMarkdownContainer"] h2,
-        [data-testid="stMarkdownContainer"] h3,
-        [data-testid="stMarkdownContainer"] h4,
-        p, span, li, label, div {
-            color: #0F172A !important;
-        }
-        .katex, .katex-display, .katex .mathnormal, .katex .mord, .katex .mrel, .katex .mbin, .katex .mop {
-            color: #0F172A !important;
-        }
-    </style>
-    """, unsafe_allow_html=True)
 
-    # Header & Tutor Introduction
+    # --------------------------------------------------------------------------
+    # TOP HERO: THE TUTOR'S WELCOME & THE CENTRAL MISSION
+    # --------------------------------------------------------------------------
     st.markdown("""
-    <div style="background-color: #FFFFFF; padding: 28px; border-radius: 8px; border: 1px solid #E2E8F0; margin-bottom: 24px;">
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 26px; margin-bottom: 24px;">
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-            <span style="background-color: #004AC6; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.05em;">PEDAGOGICAL SYLLABUS</span>
-            <span style="color: #64748B; font-family: 'JetBrains Mono', monospace; font-size: 11px;">MODULE 01.A // QUANTITATIVE FOUNDATIONS</span>
+            <span style="background-color: #004AC6; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px;">STEM TUTORIAL</span>
+            <span style="color: #64748B; font-family: 'JetBrains Mono', monospace; font-size: 11px;">FIRST-PRINCIPLES SYLLABUS</span>
         </div>
-        <h1 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 700; margin: 4px 0 10px 0; letter-spacing: -0.02em;">
-            From Mathematical First Principles to Institutional AI Credit Strategy
+        <h1 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 700; margin: 4px 0 10px 0;">
+            How We Built an AI Credit Strategy: A Step-by-Step Educational Journey
         </h1>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6; margin-bottom: 0;">
-            Welcome to the quantitative laboratory. As an undergraduate STEM student in mathematics, computer science, statistics, or engineering, you possess the foundations of differential calculus, introductory probability, and Python. This syllabus bridges the gap between classroom theory and multi-million-dollar institutional capital decisions under uncertainty.
+        <p style="color: #334155; font-size: 14px; line-height: 1.6; margin-bottom: 0;">
+            Welcome! If you are a first or second-year STEM student in Computer Science, Mathematics, Statistics, Physics, or Engineering, you already know basic calculus, introductory probability, and some Python. 
             <br><br>
-            We trace the complete evolution of credit risk: beginning from the basic volume dilemma, analyzing why naive predictive scoring triggers liquidity default spirals, and climbing the mathematical ladder until we formulate a fully calibrated, causally sound, and regulation-compliant quantitative engine.
+            <b>Our Goal in this Guide:</b> We are going to teach you this entire project from scratch—just like a tutor sitting next to you at a whiteboard. We will not throw unexplained jargon or naked formulas at you. Instead, you will see the <b>real story</b>: what problem a retail bank faces, why the obvious beginner solutions fail in real life, why we need each mathematical tool, and what every single letter and symbol means.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Syllabus Outline / Table of Contents
-    with st.expander("Syllabus Index & Guided Learning Path", expanded=False):
-        st.markdown("""
-        - **Prologue: The Volume Problem in Retail Credit** (Capital Markets vs. High-Volume Consumer Lending)
-        - **Chapter 1: Macroeconomic Regime Shifts** (Hamilton 1989 Markov-Switching Autoregression)
-        - **Chapter 2: Uncertainty Quantification** (Claude Shannon 1948 Information Entropy & Mutual Information)
-        - **Chapter 3: Calibrated Ensemble Learning** (Cost-Balanced XGBoost & Platt Logistic Scaling)
-        - **Chapter 4: Regulatory Governance & Explainability** (OSFI Guideline E-23 & Lloyd Shapley 1953 Theorem)
-        - **Chapter 5: Causal Inference & Intervention** (Potential Outcomes & Künzel et al. 2019 Multi-Arm X-Learner)
-        - **Chapter 6: Retail Game Theory** (Non-Cooperative Poaching Dynamics & Customer Lifetime Value)
-        - **Chapter 7: Macroeconomic Agent-Based Modeling** (Mesa 3.5 Virtual Society Simulation)
-        - **Appendix: Institutional Bibliography & Open Source Repositories**
-        """)
-
     # --------------------------------------------------------------------------
-    # PROLOGUE
+    # SECTION 1: THE REAL-WORLD PROBLEM (THE VOLUME DILEMMA)
     # --------------------------------------------------------------------------
-    st.markdown("---")
     st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">PROLOGUE</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">The Volume Problem in Retail Lending</h2>
-    </div>
-    """, unsafe_allow_html=True)
-
-    col_p1, col_p2 = st.columns([3, 2])
-    with col_p1:
-        st.write("""
-        Consider the operational distinction between **Capital Markets** and **Retail Credit Cards**:
-        
-        In **Capital Markets**, a commercial lender might extend a **$500 Million credit facility** to an airline purchasing ten commercial aircraft. A dedicated team of 15 senior quantitative analysts spends four months inspecting jet fuel hedge ratios, historical passenger yields, and corporate liquidity. If the borrower defaults, it represents a catastrophic institutional event.
-        
-        In **Retail Credit Cards**, the lender manages **3,000,000 consumer accounts**, each with an average line of **$5,000**:
-        - Underwriting must execute programmatically within **200 milliseconds** via mobile application API.
-        - The marginal margin per account does not permit human analyst review.
-        - Excessively conservative underwriting rejects solvent borrowers, forfeiting interest margin to rival institutions.
-        - Excessively loose underwriting permits defaults that erode institutional capital reserves.
-        
-        Consequently, consumer credit risk is fundamentally an **optimization under uncertainty** problem across large sample spaces.
-        """)
-    with col_p2:
-        st.markdown("""
-        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 3px solid #004AC6; padding: 14px; border-radius: 4px; margin-top: 10px;">
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6;">MATHEMATICAL OBJECTIVE</span>
-            <p style="font-size: 13px; color: #1E293B; margin-top: 6px; line-height: 1.5;">
-                Retail risk strategy does not eliminate default entirely; it maximizes risk-adjusted net economic margin:
-            </p>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #0F172A; background-color: #F8FAFC; padding: 8px; border-radius: 4px;">
-                Net Margin = Interest Income - Expected Losses - Attrition Penalties
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            STAGE 1 // THE PROBLEM STATEMENT
+        </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 12px 0;">
+            1. The Bank's Real-Life Dilemma: Volume & Latency
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            Imagine you are hired as a quantitative data scientist at a major retail bank.
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In <b>Corporate Lending</b>, a bank might lend $200 Million to an airline. A team of 10 human financial analysts spends 3 months reading balance sheets before making a decision.
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In <b>Retail Credit Cards</b>, the situation is completely different:
+        </p>
+        <ul style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <li>You have <b>3,000,000 everyday citizens</b> applying for cards or borrowing on their existing credit limits ($5,000 average).</li>
+            <li>Your software must make an automated decision in <b>200 milliseconds</b> when someone taps "Apply" or swipes their card.</li>
+            <li>You <i>cannot</i> hire human analysts for every applicant—the profit margins per card are far too thin.</li>
+            <li>If you are <b>too strict</b> and reject everyone, you earn zero interest revenue, and rival banks take all your customers.</li>
+            <li>If you are <b>too reckless</b> and approve everyone, defaults will wipe out your bank's cash reserves.</li>
+        </ul>
+        <div style="background-color: #F8FAFC; border-left: 3px solid #004AC6; padding: 12px 16px; border-radius: 4px; margin-top: 12px;">
+            <div style="font-weight: 600; color: #0F172A; font-size: 13px;">The Bank's Fundamental Equation:</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #004AC6; margin-top: 4px;">
+                Net Profit = Interest Income - Loan Default Losses - Lost Customer Penalty
+            </div>
+            <div style="font-size: 12px; color: #64748B; margin-top: 4px;">
+                The objective is not to eliminate all risk (which would mean lending zero dollars), but to maximize this net profit equation.
             </div>
         </div>
-        """, unsafe_allow_html=True)
-
-    # --------------------------------------------------------------------------
-    # CHAPTER 1: MACRO REGIMES (HAMILTON MS-AR)
-    # --------------------------------------------------------------------------
-    st.markdown("---")
-    st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 01</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Macroeconomic Regime Shifts: Hamilton (1989) Markov Switching</h2>
     </div>
     """, unsafe_allow_html=True)
 
-    st.write("""
-    ### Intuitive Formulation
-    Standard credit scoring models evaluate borrower features in isolation: *monthly income, age, credit utilization, and repayment history*.
-    
-    This specification contains a structural flaw: **individual default risk is non-stationary and endogenous to the macroeconomic cycle**. A borrower earning $120,000 annually in a low-interest economic expansion exhibits an empirical default probability below 0.5%. If the central bank enacts a 450-basis-point policy rate tightening cycle and corporate payrolls contract, that identical borrower's default risk can surge above 12%.
-    
-    Standard regression specifications assume parameter stationarity:
-    $$y_t = \\beta_0 + \\beta_1 x_t + \\epsilon_t$$
-    In empirical macroeconomics, this assumption fails because structural conditions alternate between distinct, persistent states.
-    """)
-
-    st.write("""
-    ### Mathematical Foundation: Hamilton (1989) Markov-Switching Autoregression
-    In his 1989 *Econometrica* publication (*A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle*), James D. Hamilton formulated time series governed by an unobserved discrete state variable $S_t \\in \\{0, 1\\}$:
-    - **State 0 (Expansion / Calm)**: Low corporate credit spreads, stable labor markets, and low volatility.
-    - **State 1 (Contraction / Stress)**: Elevated high-yield credit spreads, contraction in liquidity, and heightened default frequencies.
-    
-    The observable macroeconomic indicator $y_t$ (e.g. US High Yield Option-Adjusted Spread from FRED) follows a regime-dependent autoregressive process:
-    $$y_t = \\mu_{S_t} + \\sum_{j=1}^p \\phi_j (y_{t-j} - \\mu_{S_{t-j}}) + \\epsilon_t, \\quad \\epsilon_t \\sim \\mathcal{N}(0, \\sigma^2)$$
-    
-    The transition dynamics between economic states are parameterized by a stationary first-order Markov transition matrix $\\mathbf{P}$:
-    $$\\mathbf{P} = \\begin{bmatrix} p_{00} & p_{01} \\\\ p_{10} & p_{11} \\end{bmatrix} = \\begin{bmatrix} \\mathbb{P}(S_t=0 \\mid S_{t-1}=0) & \\mathbb{P}(S_t=1 \\mid S_{t-1}=0) \\\\ \\mathbb{P}(S_t=0 \\mid S_{t-1}=1) & \\mathbb{P}(S_t=1 \\mid S_{t-1}=1) \\end{bmatrix}$$
-    """)
-
-    col_m1, col_m2 = st.columns([3, 2])
-    with col_m1:
-        st.markdown("""
-        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 8px;">2-STATE MARKOV TRANSITION PROCESS</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
-                    <div style="font-weight: 600; font-size: 12px; color: #0F172A;">State 0: Expansion Regime</div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #006C4A; margin-top: 4px;">p00 = 0.92 (Persistence)</div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BA1A1A;">p01 = 0.08 (Macro Shock)</div>
+    # --------------------------------------------------------------------------
+    # SECTION 2: THE NAIVE ATTEMPT & THE 3 CATASTROPHES
+    # --------------------------------------------------------------------------
+    st.markdown("""
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #BA1A1A; margin-bottom: 4px;">
+            STAGE 2 // WHY STANDARD MACHINE LEARNING FAILS
+        </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 12px 0;">
+            2. The "Naive" Solution: The 3 Hidden Catastrophes
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            If you give this problem to a beginner data science student, they will build what 95% of banks traditionally built:
+        </p>
+        <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px 16px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #0F172A; margin-bottom: 12px;">
+            The Naive Policy: "Train a classifier to predict default risk. If predicted risk is high &rarr; immediately slash their credit limit by 50%!"
+        </div>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In the real world, this naive policy triggers <b>three major disasters</b>:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 10px;">
+            <div style="background-color: #FFF5F5; border: 1px solid #FED7D7; border-radius: 6px; padding: 14px;">
+                <div style="font-weight: 700; color: #9B1C1C; font-size: 13px;">Catastrophe 1: The Liquidity Death Spiral</div>
+                <div style="font-size: 12px; color: #742A2A; margin-top: 6px; line-height: 1.5;">
+                    Suppose a borrower experiences a temporary 1-month layoff between jobs. If you cut their credit line, they lose the ability to buy groceries or pay rent. <b>Your credit cut literally forces them into bankruptcy</b> when they would have recovered!
                 </div>
-                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
-                    <div style="font-weight: 600; font-size: 12px; color: #0F172A;">State 1: Contraction Regime</div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BA1A1A; margin-top: 4px;">p11 = 0.85 (Prolonged Stress)</div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #006C4A;">p10 = 0.15 (Economic Recovery)</div>
+            </div>
+            <div style="background-color: #FFF5F5; border: 1px solid #FED7D7; border-radius: 6px; padding: 14px;">
+                <div style="font-weight: 700; color: #9B1C1C; font-size: 13px;">Catastrophe 2: Weather Blindness</div>
+                <div style="font-size: 12px; color: #742A2A; margin-top: 6px; line-height: 1.5;">
+                    If you train your model in 2021 (a booming economy with 0.25% interest rates), it will assume everyone pays on time. When 2023 arrives and interest rates surge to 5.00%, the model has no idea the "economic weather" has completely changed.
+                </div>
+            </div>
+            <div style="background-color: #FFF5F5; border: 1px solid #FED7D7; border-radius: 6px; padding: 14px;">
+                <div style="font-weight: 700; color: #9B1C1C; font-size: 13px;">Catastrophe 3: Competitor Poaching</div>
+                <div style="font-size: 12px; color: #742A2A; margin-top: 6px; line-height: 1.5;">
+                    If an honest prime customer with an 800 credit score forgets one utility bill, the naive model cuts their limit. Insulted, the customer cancels their card and moves all their savings to a rival bank. The bank lost a $5,000 customer forever.
                 </div>
             </div>
         </div>
-        """, unsafe_allow_html=True)
-    with col_m2:
-        st.markdown("""
-        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 14px; border-radius: 4px;">
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6;">STATUTORY REQUIREMENT</span>
-            <p style="font-size: 12px; color: #475569; margin-top: 6px; line-height: 1.5;">
-                Under regulatory risk auditing (OSFI E-23 / Basel Committee), full-sample smoothed probabilities cannot be employed in live decisioning due to look-ahead bias ($t+1 \\dots T$).
-                <br><br>
-                Production pipelines must compute <b>filtered marginal probabilities</b>:
-                <br>
-                <code>P(S_t = 1 | F_t)</code>
-                <br>
-                conditioned strictly upon information available at time <code>t</code>.
-            </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6; margin-top: 14px;">
+            <b>Now you understand why we need advanced math!</b> We cannot use a simple classifier. We must build six specific mathematical pieces to solve each of these disasters.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # --------------------------------------------------------------------------
+    # PIECE 1: HAMILTON (1989) MARKOV REGIMES
+    # --------------------------------------------------------------------------
+    st.markdown("""
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            PIECE 1 // MODELING THE MACROECONOMIC WEATHER
         </div>
-        """, unsafe_allow_html=True)
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">
+            3. Hamilton (1989) Markov-Switching Regimes
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>Why do we need this piece?</b> To fix Catastrophe 2 (Weather Blindness). You cannot judge a borrower's safety without knowing if the economy is in a calm summer or a frozen blizzard.
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In 1989, quantitative economist <b>James D. Hamilton</b> proposed that macroeconomic data (like the US High-Yield Credit Spread from FRED) is governed by an unobserved discrete state variable:
+        </p>
+        <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 14px; border-radius: 6px; font-size: 13px; color: #0F172A; margin-bottom: 12px;">
+            <b>State 0 (Calm / Expansion):</b> Low interest rates, low unemployment, high credit safety.<br>
+            <b>State 1 (Stress / Contraction):</b> High interest rates, corporate layoffs, rising default spikes.
+        </div>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            Here is the core equation governing the economic indicator $y_t$ at month $t$:
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("""
-    **Academic References**:
-    - Statsmodels Markov Regression Specification: [statsmodels.tsa.regime_switching](https://www.statsmodels.org/stable/examples/notebooks/generated/markov_regression.html)
-    - Hamilton, J. D. (1989). *A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle*. Econometrica, 57(2), 357-384.
-    """)
+    st.latex(r"y_t = \mu_{S_t} + \phi \cdot (y_{t-1} - \mu_{S_{t-1}}) + \epsilon_t, \quad \epsilon_t \sim \mathcal{N}(0, \sigma^2)")
 
-    # --------------------------------------------------------------------------
-    # CHAPTER 2: SHANNON ENTROPY & INFORMATION GAIN
-    # --------------------------------------------------------------------------
-    st.markdown("---")
+    # Deconstructing the Math
     st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 02</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Uncertainty Quantification: Shannon Entropy & Information Gain</h2>
+    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 16px; margin: -10px 0 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 8px;">
+            DECONSTRUCTING THE FORMULA FOR FRESHMEN:
+        </div>
+        <table style="width: 100%; font-size: 13px; color: #334155; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 6px 0; font-family: 'JetBrains Mono', monospace; font-weight: 600; width: 120px; color: #0F172A;">y_t</td>
+                <td>The observable economic indicator at time <i>t</i> (e.g. US Credit Spread = 4.2%).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 6px 0; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #0F172A;">S_t</td>
+                <td>The <b>hidden regime switch</b>: equals 0 when the economy is Calm, or 1 when in Stress.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 6px 0; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #0F172A;">\mu_{S_t}</td>
+                <td>The average baseline spread in that regime (e.g. 2.5% in Calm, 6.5% in Stress).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 6px 0; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #0F172A;">\phi</td>
+                <td>The autoregressive persistence (how much of last month's deviation carries over to this month).</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 0; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #0F172A;">\epsilon_t</td>
+                <td>Random Gaussian noise representing unexpected economic shocks this month.</td>
+            </tr>
+        </table>
     </div>
     """, unsafe_allow_html=True)
 
     st.write("""
-    ### Intuitive Formulation
-    Given a portfolio dataset of 30,000 accounts spanning dozens of candidate variables (credit limits, payment schedules, demographic attributes, and macro indices), a quantitative team must determine which covariates provide statistically robust signal versus non-predictive noise.
-    
-    Linear correlation ($r$) is insufficient for credit data because default risk behaves non-linearly. A borrower with a 15% debt-to-income ratio has roughly the same low default risk as one with 20%, but when utilization exceeds 85%, default probability scales non-linearly.
-    
-    ### Mathematical Foundation: Claude Shannon (1948)
-    In *A Mathematical Theory of Communication* (1948), Claude Shannon defined the expected information content, or entropy, of a discrete random variable $Y$:
-    $$H(Y) = - \\sum_{y \\in \\mathcal{Y}} p(y) \\log_2 p(y) \\quad \\text{[units: bits]}$$
-    For a binary default indicator $Y \\in \\{0: \\text{Non-Default}, 1: \\text{Default}\\}$ with default rate $p$:
-    $$H(Y) = -p \\log_2(p) - (1-p) \\log_2(1-p)$$
+    ### How does the economy switch between Calm and Stress?
+    It follows a **Markov Transition Matrix** $\mathbf{P}$. In probability, the vertical bar $\mid$ simply means **"given that"**:
     """)
 
-    # Interactive Entropy Curve
-    st.markdown("#### Interactive Empirical Laboratory: Shannon Entropy Function H(p)")
-    col_e1, col_e2 = st.columns([1, 2])
-    with col_e1:
-        p_user = st.slider("Observed Default Probability (p)", min_value=0.01, max_value=0.99, value=0.22, step=0.01)
-        h_val = - (p_user * np.log2(p_user) + (1 - p_user) * np.log2(1 - p_user))
-        st.metric("Portfolio Entropy H(Y)", f"{h_val:.4f} bits")
-        st.caption("Maximum uncertainty occurs at p=0.50 (1.0 bit: uniform randomness). At p=0.22, portfolio baseline entropy is 0.757 bits.")
-    with col_e2:
-        p_curve = np.linspace(0.001, 0.999, 100)
-        h_curve = - (p_curve * np.log2(p_curve) + (1 - p_curve) * np.log2(1 - p_curve))
-        fig_ent = go.Figure()
-        fig_ent.add_trace(go.Scatter(x=p_curve, y=h_curve, mode="lines", name="H(p)", line=dict(color="#004AC6", width=2.5)))
-        fig_ent.add_trace(go.Scatter(x=[p_user], y=[h_val], mode="markers", name="Selected Operating Point", marker=dict(color="#BA1A1A", size=10)))
-        fig_ent.update_layout(
-            title="Shannon Binary Entropy Curve H(p)",
-            xaxis_title="Default Frequency p",
-            yaxis_title="Entropy (Bits)",
-            template="plotly_white",
-            height=260,
-            margin=dict(l=40, r=40, t=40, b=40)
-        )
-        st.plotly_chart(fig_ent, use_container_width=True)
+    st.latex(r"\mathbf{P} = \begin{bmatrix} p_{00} & p_{01} \\ p_{10} & p_{11} \end{bmatrix} = \begin{bmatrix} \mathbb{P}(S_t=0 \mid S_{t-1}=0) & \mathbb{P}(S_t=1 \mid S_{t-1}=0) \\ \mathbb{P}(S_t=0 \mid S_{t-1}=1) & \mathbb{P}(S_t=1 \mid S_{t-1}=1) \end{bmatrix}")
+
+    st.markdown("""
+    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px; margin: 10px 0 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 6px;">
+            READING THE 4 PROBABILITIES IN PLAIN ENGLISH:
+        </div>
+        <ul style="font-size: 13px; color: #334155; line-height: 1.6; margin: 0; padding-left: 20px;">
+            <li><b>p00 = 0.92 (92%)</b>: If the economy is Calm this month ($S_{t-1}=0$), there is a 92% chance it stays Calm next month ($S_t=0$).</li>
+            <li><b>p01 = 0.08 (8%)</b>: If the economy is Calm, there is an 8% chance a sudden shock triggers a Stress regime ($S_t=1$).</li>
+            <li><b>p10 = 0.15 (15%)</b>: If the economy is in Stress, there is a 15% chance of recovery back to Calm next month.</li>
+            <li><b>p11 = 0.85 (85%)</b>: If the economy is in Stress, recessions tend to persist with an 85% probability.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # --------------------------------------------------------------------------
+    # PIECE 2: SHANNON ENTROPY (CLAUDE SHANNON 1948)
+    # --------------------------------------------------------------------------
+    st.markdown("---")
+    st.markdown("""
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            PIECE 2 // MEASURING INFORMATION WITHOUT BIAS
+        </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">
+            4. Claude Shannon (1948) Information Entropy
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>Why do we need this piece?</b> When you download 30,000 customer records, you have 25 different columns: Age, Marital Status, Education, Limit, Recent Delinquencies, Bill Amounts. Which variables contain <b>genuine predictive signal</b>, and which ones are <b>useless noise</b>?
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            Beginners often use Pearson correlation ($r$). But correlation <i>only</i> detects straight lines! Default risk is highly non-linear.
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In 1948, <b>Claude Shannon</b> (the father of information theory) invented a mathematical ruler for uncertainty called <b>Entropy $H(Y)$</b>. For a customer who either pays ($Y=0$) or defaults ($Y=1$) with default probability $p$:
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.latex(r"H(Y) = -p \cdot \log_2(p) - (1-p) \cdot \log_2(1-p) \quad \text{[units: bits]}")
+
+    st.markdown("""
+    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px; margin: -10px 0 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 6px;">
+            UNDERSTANDING "BITS" OF UNCERTAINTY:
+        </div>
+        <p style="font-size: 13px; color: #334155; line-height: 1.5; margin: 0;">
+            - If $p = 0.50$ (a 50/50 coin toss), uncertainty is at its absolute maximum: $H(Y) = 1.0$ bit.<br>
+            - If $p = 0.0$ or $1.0$ (outcome completely guaranteed), uncertainty is zero: $H(Y) = 0.0$ bits.<br>
+            - In our 30,000-customer dataset, the baseline default rate is $p = 0.221$ (22.1%), so portfolio baseline entropy is <b>0.760 bits</b>.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Interactive Entropy Mini-Lab
+    st.markdown("#### Interactive Mini-Lab: See How Uncertainty Changes with Probability")
+    col_ent1, col_ent2 = st.columns([1, 2])
+    with col_ent1:
+        p_val = st.slider("Select Default Probability (p)", min_value=0.01, max_value=0.99, value=0.22, step=0.01)
+        h_calc = - (p_val * np.log2(p_val) + (1 - p_val) * np.log2(1 - p_val))
+        st.metric("Calculated Entropy H(Y)", f"{h_calc:.4f} bits")
+        st.caption("Notice how entropy peaks at p=0.50 (maximum chaos) and falls to 0 at the edges!")
+    with col_ent2:
+        p_grid = np.linspace(0.001, 0.999, 100)
+        h_grid = - (p_grid * np.log2(p_grid) + (1 - p_grid) * np.log2(1 - p_grid))
+        fig_e = go.Figure()
+        fig_e.add_trace(go.Scatter(x=p_grid, y=h_grid, mode="lines", name="Entropy Curve", line=dict(color="#004AC6", width=2.5)))
+        fig_e.add_trace(go.Scatter(x=[p_val], y=[h_calc], mode="markers", name="Your Point", marker=dict(color="#BA1A1A", size=10)))
+        fig_e.update_layout(title="Shannon Binary Entropy Curve H(p)", xaxis_title="Default Probability (p)", yaxis_title="Entropy (Bits)", template="plotly_white", height=240, margin=dict(l=40, r=40, t=35, b=35))
+        st.plotly_chart(fig_e, use_container_width=True)
 
     st.write("""
-    ### Information Gain (Mutual Information)
-    To rank features without model-specific inductive bias, we evaluate how conditioning on covariate $X$ reduces the entropy of target $Y$:
-    $$IG(Y, X) = H(Y) - H(Y \\mid X) = H(Y) - \\sum_{x \\in \\mathcal{X}} p(x) H(Y \\mid X = x)$$
+    ### What is Information Gain?
+    If we know a borrower's attribute $X$ (like whether they missed last month's payment), how much does our uncertainty about default drop?
     """)
 
-    ig_table = pd.DataFrame([
-        {"Covariate": "pay_recent_delinquency", "Information Gain (Bits)": 0.1084, "Empirical Status": "[Top Predictor] Direct behavioral default indicator"},
-        {"Covariate": "pay_max_delinquency", "Information Gain (Bits)": 0.0965, "Empirical Status": "[Core Predictor] Multi-month rolling solvency stress"},
-        {"Covariate": "avg_pay_amt", "Information Gain (Bits)": 0.0228, "Empirical Status": "[Solvency Buffer] Monthly cash flow capacity"},
-        {"Covariate": "limit_bal", "Information Gain (Bits)": 0.0220, "Empirical Status": "[Exposure Size] Underwritten liquidity threshold"},
-        {"Covariate": "pay_to_bill_ratio", "Information Gain (Bits)": 0.0183, "Empirical Status": "[Liquidity Health] Repayment coverage velocity"},
-        {"Covariate": "education", "Information Gain (Bits)": 0.0042, "Empirical Status": "[Negligible Signal] Weak separation capacity"},
-        {"Covariate": "age", "Information Gain (Bits)": 0.0026, "Empirical Status": "[Noise Floor] Near-zero standalone mutual information"},
-        {"Covariate": "marriage", "Information Gain (Bits)": 0.0007, "Empirical Status": "[Noise Floor] Zero statistical separation capacity"}
+    st.latex(r"IG(Y, X) = H(Y) - H(Y \mid X)")
+
+    st.write("""
+    When we calculated $IG(Y, X)$ on all 30,000 real accounts, we discovered an eye-opening truth:
+    """)
+
+    ig_df = pd.DataFrame([
+        {"Variable Name": "pay_recent_delinquency", "Information Gain (Bits)": 0.1084, "What it means": "Did they miss last month's bill? (Massive signal)"},
+        {"Variable Name": "pay_max_delinquency", "Information Gain (Bits)": 0.0965, "What it means": "Worst delinquency in 6 months (Very strong signal)"},
+        {"Variable Name": "avg_pay_amt", "Information Gain (Bits)": 0.0228, "What it means": "How much cash they actually repay every month"},
+        {"Variable Name": "limit_bal", "Information Gain (Bits)": 0.0220, "What it means": "Total credit line given to them"},
+        {"Variable Name": "education", "Information Gain (Bits)": 0.0042, "What it means": "College degree vs High School (Nearly zero predictive value)"},
+        {"Variable Name": "age", "Information Gain (Bits)": 0.0026, "What it means": "Borrower age (Almost completely noise)"},
+        {"Variable Name": "marriage", "Information Gain (Bits)": 0.0007, "What it means": "Marital status (Pure statistical noise)"}
     ])
-    st.dataframe(ig_table, use_container_width=True)
+    st.dataframe(ig_df, use_container_width=True)
 
     # --------------------------------------------------------------------------
-    # CHAPTER 3: XGBOOST & PROBABILITY CALIBRATION
+    # PIECE 3: XGBOOST & PROBABILITY CALIBRATION
     # --------------------------------------------------------------------------
     st.markdown("---")
     st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 03</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Ensemble Learning & Probability Calibration: XGBoost & Platt Scaling</h2>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.write("""
-    ### Gradient Boosted Decision Trees (XGBoost)
-    Decision trees recursively partition the covariate space $\\mathcal{X}$ along dimensions that maximize information gain or minimize cross-entropy loss. In credit risk, single trees overfit rapidly; therefore, we employ **Extreme Gradient Boosting (XGBoost)**:
-    $$\\hat{y}_i = \\sum_{k=1}^K f_k(x_i), \\quad f_k \\in \\mathcal{F}$$
-    Each subsequent tree $f_k$ is fitted to the pseudo-residuals of the prior ensemble via second-order Taylor expansion of the objective function:
-    $$\\mathcal{L}^{(t)} \\approx \\sum_{i=1}^N \\left[ g_i f_t(x_i) + \\frac{1}{2} h_i f_t^2(x_i) \\right] + \\Omega(f_t)$$
-    where $g_i = \\partial_{\\hat{y}^{(t-1)}} l(y_i, \\hat{y}^{(t-1)})$ and $h_i = \\partial^2_{\\hat{y}^{(t-1)}} l(y_i, \\hat{y}^{(t-1)})$.
-    
-    ### Cost-Sensitive Weighting & The Calibration Hazard
-    In consumer credit portfolios, defaults are relatively rare (empirical event rate $\\approx 22\\%$, or lower in prime portfolios). To avoid degenerate convergence to the majority class, we assign cost-sensitive gradient scaling:
-    $$\\text{scale\\_pos\\_weight} = \\frac{N_{\\text{negative}}}{N_{\\text{positive}}} = \\frac{18,691}{5,309} \\approx 3.52$$
-    
-    **The Calibration Hazard**: While `scale_pos_weight` maximizes ranking metrics (ROC-AUC), it structurally skews the raw sigmoid outputs away from true mathematical probabilities. A raw output of $0.80$ no longer corresponds to an 80% default rate. In capital provisioning, uncalibrated risk probabilities lead to catastrophic mispricing.
-    
-    ### Mathematical Remedy: Out-of-Fold Platt Logistic Calibration (1999)
-    To restore probabilistic fidelity, we fit a univariate logistic mapping over the raw tree ensemble log-odds margin $f(x)$ using out-of-fold validation splits:
-    $$\\hat{p}_{\\text{calibrated}} = \\frac{1}{1 + \\exp(A \\cdot f(x) + B)}$$
-    where parameters $A$ and $B$ are estimated via maximum likelihood on holdout partitions.
-    """)
-
-    col_c1, col_c2 = st.columns(2)
-    with col_c1:
-        st.markdown("""
-        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 16px; border-radius: 6px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">EXPECTED CALIBRATION ERROR (ECE)</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: #006C4A; margin: 4px 0;">1.71%</div>
-            <div style="font-size: 12px; color: #475569;">OSFI E-23 Standard: &lt; 3.00% across deciles [STATUS: PASS]</div>
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            PIECE 3 // ACCURATE PREDICTION WITHOUT ARROGANCE
         </div>
-        """, unsafe_allow_html=True)
-    with col_c2:
-        st.markdown("""
-        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 16px; border-radius: 6px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">RECEIVER OPERATING CHARACTERISTIC (ROC-AUC)</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: #004AC6; margin: 4px 0;">0.7800</div>
-            <div style="font-size: 12px; color: #475569;">Separation power validated on out-of-sample holdout (N=6,000)</div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">
+            5. XGBoost Decision Trees & Platt Probability Calibration
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>Why do we need this piece?</b> A single decision tree is just a flowchart (e.g., <i>"Is missed payment > 1? If yes &rarr; risky"</i>). <b>XGBoost (Extreme Gradient Boosting)</b> builds 150 small trees sequentially, where Tree 2 focuses on correcting the errors of Tree 1, Tree 3 corrects Tree 2, and so on.
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>The Hidden Trap (Overconfidence):</b> Because defaulting customers are relatively rare (only 22%), we force the trees to pay 3.52 times more attention to defaults using <code>scale_pos_weight = 3.52</code>.
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            While this helps the trees rank borrowers accurately, it destroys the <b>honesty of the probabilities</b>! The raw model might spit out a score of 0.85, but in reality, only 35% of those borrowers default. In finance, if your probabilities are exaggerated, you misprice every single loan!
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>The Solution: Platt Logistic Scaling (1999)</b><br>
+            We take the raw uncalibrated tree margin $f(x)$ and pass it through a calibrated logistic sigmoid mapper on holdout validation data:
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.latex(r"\hat{p}_{\text{calibrated}} = \frac{1}{1 + \exp(A \cdot f(x) + B)}")
+
+    st.markdown("""
+    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px; margin: -10px 0 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 6px;">
+            THE RESULT: EXPECTED CALIBRATION ERROR (ECE) = 1.71%
         </div>
-        """, unsafe_allow_html=True)
-
-    # --------------------------------------------------------------------------
-    # CHAPTER 4: SHAP EXPLAINABILITY (COOPERATIVE GAME THEORY)
-    # --------------------------------------------------------------------------
-    st.markdown("---")
-    st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 04</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Statutory Model Governance & Explainability: OSFI E-23 & TreeSHAP</h2>
+        <p style="font-size: 13px; color: #334155; line-height: 1.5; margin: 0;">
+            Across every risk decile (from borrowers predicted at 0-10% risk up to 90-100% risk), our calibrated probability matches the real-world default rate within <b>1.71 percentage points</b>! Uncalibrated models regularly miss by over 15%.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
-    st.write("""
-    ### Statutory Mandate: OSFI Guideline E-23 & Adverse Action Notices
-    Under Canadian federal banking standards (**OSFI Guideline E-23**) and the US **Equal Credit Opportunity Act (ECOA)**, algorithmic credit underwriting cannot operate as an opaque black box. When an applicant is denied credit or experiences a credit limit cut, the institution must generate an **Adverse Action Notice** citing the primary explanatory factors.
-    
-    ### Mathematical Solution: Lloyd Shapley's (1953) Cooperative Game Theory
-    In 1953, Lloyd Shapley solved the problem of fairly distributing collective payoffs among participating players in a coalition. Scott Lundberg (NeurIPS 2017) adapted this framework to machine learning via **TreeSHAP**:
-    
-    Each covariate $i \\in F$ acts as a player, and the model prediction $f(x)$ is the coalition payoff. The unique attribution values $\\phi_i(x)$ satisfying all four fairness axioms are given by:
-    $$\\phi_i(x) = \\sum_{S \\subseteq F \\setminus \\{i\\}} \\frac{|S|!(|F| - |S| - 1)!}{|F|!} \\left[ f(S \\cup \\{i\\}) - f(S) \\right]$$
-    
-    **The Four Fundamental Shapley Axioms**:
-    1. **Efficiency**: $\\sum_{i=1}^{|F|} \\phi_i(x) = f(x) - \\mathbb{E}[f(X)]$. The sum of all attributions matches the difference between individual prediction and baseline expectation.
-    2. **Symmetry**: If $f(S \\cup \\{i\\}) = f(S \\cup \\{j\\})$ for all $S$, then $\\phi_i(x) = \\phi_j(x)$.
-    3. **Dummy / Null**: If $f(S \\cup \\{i\\}) = f(S)$ for all $S$, then $\\phi_i(x) = 0$.
-    4. **Additivity**: For ensemble sum $f + g$, $\\phi_i(f + g) = \\phi_i(f) + \\phi_i(g)$.
-    """)
-
     # --------------------------------------------------------------------------
-    # CHAPTER 5: CAUSAL INFERENCE (X-LEARNER)
+    # PIECE 4: EXPLAINABILITY (SHAPLEY VALUES / SHAP)
     # --------------------------------------------------------------------------
     st.markdown("---")
     st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 05</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Causal Inference & Intervention: Multi-Arm X-Learner</h2>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.write("""
-    ### Conceptual Principle: Prediction is Not Strategy
-    A standard predictive model computes conditional expectation:
-    $$\\mathbb{E}[Y \\mid X = x]$$
-    This answers: *"What is the probability of default given borrower characteristics $x$?"*
-    
-    In risk policy, this prediction is insufficient. If a bank observes a high default risk and responds by reducing the borrower's credit limit by 50%, it removes their liquidity cushion. For cash-constrained borrowers, this intervention **forces an immediate default that would not have occurred under temporary forbearance**.
-    
-    To evaluate policy actions, we must estimate **treatment counterfactuals** within the Neyman-Rubin potential outcomes framework:
-    - $Y_i(0)$: Default outcome under **Control (Do Nothing)**
-    - $Y_i(1)$: Default outcome under **Limit Cut (20% reduction)**
-    - $Y_i(2)$: Default outcome under **Payment Holiday (3-month forbearance)**
-    
-    We seek the **Conditional Average Treatment Effect (CATE)**:
-    $$\\tau_{a,0}(x) = \\mathbb{E}[Y(a) - Y(0) \\mid X = x]$$
-    
-    ### Algorithmic Architecture: Multi-Arm X-Learner (Künzel et al. 2019)
-    The X-Learner overcomes severe sample size imbalance between treatment arms via a four-stage estimation procedure:
-    """)
-
-    st.markdown("""
-    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 16px; margin: 12px 0;">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 10px;">MULTI-ARM X-LEARNER 4-STAGE ESTIMATION PIPELINE</div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #004AC6;">STAGE 01: BASE MODELS</div>
-                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Train outcome estimators &mu;<sub>0</sub>(x) on Control and &mu;<sub>a</sub>(x) on Treatment Arm a</div>
-            </div>
-            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #004AC6;">STAGE 02: IMPUTATION</div>
-                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Impute counterfactual effects: D<sub>a</sub> = Y<sub>a</sub> - &mu;<sub>0</sub>(X<sub>a</sub>) and D<sub>0</sub> = &mu;<sub>a</sub>(X<sub>0</sub>) - Y<sub>0</sub></div>
-            </div>
-            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #004AC6;">STAGE 03: EFFECT MODELS</div>
-                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Fit second-stage regressors &tau;<sub>a</sub>(x) on Treated and &tau;<sub>0</sub>(x) on Control</div>
-            </div>
-            <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 4px;">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #006C4A;">STAGE 04: PROPENSITY CATE</div>
-                <div style="font-size: 11px; color: #334155; margin-top: 4px;">Weight by propensity: &tau;<sub>a,0</sub>(x) = e(x)&tau;<sub>0</sub>(x) + (1 - e(x))&tau;<sub>a</sub>(x)</div>
-            </div>
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            PIECE 4 // EXPLAINING EVERY DECISION TO HUMANS
         </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">
+            6. Explaining the Black Box: Lloyd Shapley's (1953) Game Theory
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>Why do we need this piece?</b> By law (under Canadian OSFI banking guidelines and the US Equal Credit Opportunity Act), a bank <b>cannot</b> reject a person and say: <i>"Sorry, our 150 decision trees said no, but we don't know why."</i>
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            You must tell the customer the exact top reasons for the decision (e.g. <i>"Your recent missed payment increased your risk by 14%, while your long 10-year history reduced it by 8%"</i>).
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In 1953, mathematician <b>Lloyd Shapley</b> won the Nobel Prize in Economics for solving a famous cooperative game theory problem: <i>If a group of players works together to win a prize, what is the mathematically fair way to divide the prize based on each player's actual contribution?</i>
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            In 2017, computer scientist Scott Lundberg applied this to machine learning (**TreeSHAP**): each feature is a "player", and the final risk score is the "prize":
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
-    st.write("""
-    **Empirical Findings on N=30,000 Master Dataset**:
-    - **Liquidity-Distressed Cohort**: Granting a Payment Holiday ($a=2$) yields $\\hat{\\tau}_{2,0}(x) = -0.074$ (a **7.4% reduction in default rate**), preventing destructive loan write-offs.
-    - **Over-Leveraged Discretionary Spenders**: Implementing a Limit Cut ($a=1$) reduces credit exposure without accelerating insolvency.
-    """)
+    st.latex(r"\phi_i(x) = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F| - |S| - 1)!}{|F|!} \left[ f(S \cup \{i\}) - f(S) \right]")
 
-    # --------------------------------------------------------------------------
-    # CHAPTER 6: RETAIL GAME THEORY (POACHING)
-    # --------------------------------------------------------------------------
-    st.markdown("---")
     st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 06</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Retail Game Theory: Competitive Poaching & Customer Lifetime Value</h2>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.write("""
-    ### The Multi-Lender Strategic Equilibrium
-    Credit decisions do not occur in an isolated monopoly. When an underwriter reduces a borrower's credit line, the borrower does not absorb the utility loss passively. If the customer possesses a prime credit history, rival financial institutions actively solicit balance transfers.
-    
-    If the bank applies a precautionary 20% limit reduction to a prime customer ($utilization < 20\\%$), default risk marginally declines from 8.4% to 5.7%. However, the adverse action induces customer dissatisfaction, triggering voluntary card closure and balance transfer to a competing institution (**Competitor Poaching Risk**).
-    
-    ### The Net Objective Optimization Equation
-    To prevent value-destroying policy decisions, we formulate the lender's action choice as a game-theoretic expected profit optimization problem incorporating **Customer Lifetime Value (LTV)**:
-    $$\\pi^*(x) = \\arg\\max_{t \\in \\{0, 1, 2\\}} \\left[ \\underbrace{\\text{Net Interest Margin}(t)}_{\\text{Lending Revenue}} - \\underbrace{\\hat{P}(\\text{default} \\mid t) \\cdot \\text{EAD} \\cdot \\text{LGD}}_{\\text{Expected Default Loss}} - \\underbrace{P_{\\text{poach}}(t) \\cdot \\text{LTV}}_{\\text{Attrition Penalty}} \\right]$$
-    
-    Incorporating the attrition term $P_{\\text{poach}}(t) \\cdot \\text{LTV}$ mathematically preserves prime borrower lines, retaining over **$700 in net lifetime margin per account** that standard risk scoring systematically eliminates.
-    """)
-
-    # --------------------------------------------------------------------------
-    # CHAPTER 7: AGENT-BASED MODELING (ABM)
-    # --------------------------------------------------------------------------
-    st.markdown("---")
-    st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 07</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Dynamic Economic Simulation: 24-Month Agent-Based Digital Twin (Mesa)</h2>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.write("""
-    ### Why Closed-Form Equations Fail Over Time
-    Static econometric regressions assume that market conditions remain constant following an intervention. In reality, credit cycles exhibit endogenous feedback loops: rising interest rates increase debt burdens, which elevates default frequencies, inducing banks to restrict credit, further contracting aggregate demand.
-    
-    To evaluate long-run portfolio performance under stress, we implemented a full **Agent-Based Model (ABM)** using the **Mesa 3.5 framework**:
-    - **1,000 Autonomous `CustomerAgents`**: Receiving monthly income, deducting basic consumption expenses, managing revolving balances, and experiencing idiosyncratic liquidity shocks.
-    - **Institutional `BankAgent`**: Executing credit strategy policies under two distinct operational paradigms:
-      1. *Traditional Scoring Rule*: Punitive 50% limit cuts upon first observed delinquency.
-      2. *Causal AI Strategy*: Targeted payment moratoriums, surgical line cuts, and poaching-defense retention.
-    - **24-Month Economic Horizon**: Parameterized by Bank of Canada policy rate trajectories and FRED credit spreads.
-    """)
-
-    # Summary Results Box
-    st.markdown("""
-    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 18px; border-radius: 6px; margin: 16px 0;">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 12px;">
-            24-MONTH AGENT-BASED SIMULATION EMPIRICAL BENCHMARK
+    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px; margin: -10px 0 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 6px;">
+            DECONSTRUCTING THE SHAPLEY FORMULA IN PLAIN ENGLISH:
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-            <div>
-                <div style="font-size: 12px; color: #64748B;">CUMULATIVE DEFAULTS AVERTED</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #006C4A;">-25.2%</div>
-                <div style="font-size: 11px; color: #475569;">51 fewer bankruptcies per 1k cohort</div>
+        <p style="font-size: 13px; color: #334155; line-height: 1.5; margin: 0;">
+            Imagine testing every possible subset of features $S$. To see how much feature $i$ (e.g. missed payment) matters, we calculate the model's score <i>with</i> feature $i$ minus the score <i>without</i> feature $i$: $[f(S \cup \{i\}) - f(S)]$.<br>
+            Then, we take the weighted average across all possible feature combinations. The result $\phi_i$ is the exact, unarguable contribution of that feature to the borrower's risk score.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # --------------------------------------------------------------------------
+    # PIECE 5: CAUSAL INFERENCE (MULTI-ARM X-LEARNER)
+    # --------------------------------------------------------------------------
+    st.markdown("---")
+    st.markdown("""
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            PIECE 5 // PREDICTION IS NOT STRATEGY
+        </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">
+            7. Causal AI & The Multi-Arm X-Learner: Prescribing the Right Action
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>Why do we need this piece?</b> This is the biggest mental breakthrough of modern AI:
+        </p>
+        <div style="background-color: #EFF6FF; border-left: 3px solid #004AC6; padding: 12px 16px; border-radius: 4px; font-size: 14px; color: #1E3A8A; font-weight: 600; margin-bottom: 12px;">
+            Knowing that someone is sick does NOT tell you what medicine to prescribe.
+        </div>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            A standard predictive model computes $\mathbb{E}[Y \mid X]$: <i>"Customer #5 has a 35% default probability."</i><br>
+            If you blindly cut their credit limit by 50%, you take away their emergency cash cushion and <b>cause them to go bankrupt immediately</b>!
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            To be smart, the bank must estimate what would happen under <b>3 distinct possible actions</b> (Potential Outcomes):
+        </p>
+        <ul style="color: #334155; font-size: 13px; line-height: 1.6;">
+            <li><b>Action 0: Do Nothing (Control)</b> &rarr; Let borrower continue as normal.</li>
+            <li><b>Action 1: Cut Limit by 20%</b> &rarr; Useful for reckless spenders who have plenty of savings.</li>
+            <li><b>Action 2: Grant a 3-Month Payment Holiday</b> &rarr; Pause payments so a temporarily laid-off worker can find a job.</li>
+        </ul>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            The <b>Conditional Average Treatment Effect (CATE) $\tau_{a,0}(x)$</b> measures the difference in default risk if we apply Action $a$ versus Doing Nothing:
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.latex(r"\tau_{a,0}(x) = \mathbb{E}[Y(a) - Y(0) \mid X = x]")
+
+    st.markdown("""
+    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 14px; margin: -10px 0 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 6px;">
+            HOW TO INTERPRET CATE \tau:
+        </div>
+        <p style="font-size: 13px; color: #334155; line-height: 1.5; margin: 0;">
+            - If $\tau = -0.074$ (-7.4%), the action <b>reduced default risk by 7.4 percentage points</b>! This action saves the customer.<br>
+            - If $\tau = +0.050$ (+5.0%), the action <i>increased</i> default risk! Applying this action would harm the customer and the bank.<br>
+            - We use the <b>Multi-Arm X-Learner</b> (Künzel et al. 2019, PNAS) to accurately estimate this effect even when only a small fraction of customers received special treatment in the past.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # --------------------------------------------------------------------------
+    # PIECE 6: AGENT-BASED SIMULATION (MESA 3.5 DIGITAL TWIN)
+    # --------------------------------------------------------------------------
+    st.markdown("---")
+    st.markdown("""
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            PIECE 6 // TESTING IN A VIRTUAL SOCIETY BEFORE REAL LIFE
+        </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">
+            8. Dynamic Economic Simulation: 24-Month Mesa Agent-Based Model
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            <b>Why do we need this piece?</b> You cannot test a radical new mathematical credit policy on real human beings with real bank capital without proving it works first!
+        </p>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+            We built a <b>digital flight simulator</b> of the economy using the <b>Mesa 3.5 Agent-Based Modeling framework</b>:
+        </p>
+        <ul style="color: #334155; font-size: 13px; line-height: 1.6;">
+            <li><b>1,000 Autonomous Customer Agents</b>: Each month, they earn a salary, pay living expenses, pay credit card bills, and experience random shocks (job loss, inflation hikes).</li>
+            <li><b>1 Bank Agent</b>: Makes credit decisions using either the <i>Traditional Strategy</i> (blanket 50% limit cuts) or our <i>Causal AI Strategy</i> (targeted holidays and cuts).</li>
+            <li><b>24-Month Clock</b>: Simulates 2 continuous years driven by real Bank of Canada interest rate spikes and recession shocks.</li>
+        </ul>
+        <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 16px; margin-top: 14px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #004AC6; margin-bottom: 8px;">
+                THE FINAL 24-MONTH SCOREBOARD:
             </div>
-            <div>
-                <div style="font-size: 12px; color: #64748B;">NET PORTFOLIO MARGIN LIFT</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #004AC6;">+$3,406,235</div>
-                <div style="font-size: 11px; color: #475569;">+42.8% retained interest & fee margin</div>
-            </div>
-            <div>
-                <div style="font-size: 12px; color: #64748B;">COMPUTATIONAL PERFORMANCE</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #0F172A;">1.8 Seconds</div>
-                <div style="font-size: 11px; color: #475569;">Vectorized batch execution across 24 cycles</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+                <div>
+                    <div style="font-size: 11px; color: #64748B;">DEFAULTS PREVENTED</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #006C4A;">-25.2% Fewer</div>
+                    <div style="font-size: 11px; color: #475569;">51 bankruptcies averted per 1k cohort</div>
+                </div>
+                <div>
+                    <div style="font-size: 11px; color: #64748B;">NET PORTFOLIO PROFIT LIFT</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #004AC6;">+$3,406,235</div>
+                    <div style="font-size: 11px; color: #475569;">Retained interest & avoided write-offs</div>
+                </div>
+                <div>
+                    <div style="font-size: 11px; color: #64748B;">EXECUTION SPEED</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #0F172A;">1.8 Seconds</div>
+                    <div style="font-size: 11px; color: #475569;">Fast vectorized simulation engine</div>
+                </div>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
     # --------------------------------------------------------------------------
-    # APPENDIX: BIBLIOGRAPHY & REPOSITORY
+    # SUMMARY / GLOSSARY OF TERMS FOR FRESHMEN
     # --------------------------------------------------------------------------
     st.markdown("---")
     st.markdown("""
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
-        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">APPENDIX</span>
-        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Academic Syllabus, Curated Lectures & Source Repositories</h2>
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 22px; margin-bottom: 20px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 4px;">
+            SUMMARY // QUICK-REFERENCE GLOSSARY
+        </div>
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 12px 0;">
+            9. Quick-Reference Glossary of Every Term Used
+        </h2>
+        <table style="width: 100%; font-size: 13px; color: #334155; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; width: 180px; color: #0F172A;">Default</td>
+                <td>When a borrower fails to pay their debt for 90 days. The bank writes this off as a loss.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Regime Switching</td>
+                <td>A statistical model where the world flips between two states (e.g. Economic Growth vs. Recession).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Entropy (H)</td>
+                <td>The amount of uncertainty or surprise in an event, measured in bits (invented by Claude Shannon in 1948).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Information Gain (IG)</td>
+                <td>How many bits of uncertainty disappear when you learn a specific piece of information.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Platt Calibration</td>
+                <td>Transforming raw machine learning scores into true real-world probabilities so the AI doesn't exaggerate risk.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Shapley Value (SHAP)</td>
+                <td>A game-theoretic calculation that fairly attributes how much each feature contributed to the final prediction.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Potential Outcomes</td>
+                <td>The different parallel futures of a borrower under different bank policies (Control vs Limit Cut vs Payment Holiday).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">CATE (\tau)</td>
+                <td>Conditional Average Treatment Effect: the causal impact of an action on a specific person's default probability.</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">Agent-Based Model</td>
+                <td>A computer simulation of individual people (agents) interacting in an economy over time to observe emergent macro behavior.</td>
+            </tr>
+        </table>
     </div>
     """, unsafe_allow_html=True)
-
-    st.markdown("""
-    #### Curated University Lecture Courses
-    1. **MIT OpenCourseWare 18.06 (Linear Algebra - Prof. Gilbert Strang)**: Foundational matrix decomposition and vector space theory.
-    2. **Yale University ECON 159 (Game Theory - Prof. Ben Polak)**: Strategic equilibria, Nash dynamics, and non-cooperative games.
-    3. **StatQuest with Josh Starmer**: Algorithmic intuition for Decision Trees, Gradient Boosting, and Precision-Recall tradeoffs.
-
-    #### Foundational Academic Treatises
-    1. **Hastie, T., Tibshirani, R., & Friedman, J.** *The Elements of Statistical Learning: Data Mining, Inference, and Prediction*. Springer.
-    2. **Hamilton, J. D.** (1994). *Time Series Analysis*. Princeton University Press.
-    3. **Pearl, J.** (2009). *Causality: Models, Reasoning, and Inference*. Cambridge University Press.
-    4. **Cover, T. M., & Thomas, J. A.** (2006). *Elements of Information Theory*. John Wiley & Sons.
-
-    #### Open Source Frameworks & Code Lineage
-    - Primary Suite Repository: [github.com/52hz-Daniel/Credit-Risk-Model](https://github.com/52hz-Daniel/Credit-Risk-Model)
-    - TreeSHAP Model Interpretability: [github.com/slundberg/shap](https://github.com/slundberg/shap)
-    - Multi-Arm Causal Machine Learning: [github.com/uber/causalml](https://github.com/uber/causalml) & [github.com/py-why/EconML](https://github.com/py-why/EconML)
-    - Mesa Agent-Based Simulation Framework: [github.com/projectmesa/mesa](https://github.com/projectmesa/mesa)
-    """)

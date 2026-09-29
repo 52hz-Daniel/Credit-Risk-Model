@@ -22,6 +22,7 @@ from config import (
 )
 from models.feature_engineering import rank_features_by_information_gain
 from models.explainability import ModelExplainabilityEngine
+from app.tutorial_page import render_tutorial_page
 
 # ---------------------------------------------------------
 # Streamlit App Configuration
@@ -86,6 +87,7 @@ st.sidebar.caption("Empirical Retail Credit & Macro Regime Prototype")
 selected_tab = st.sidebar.radio(
     "Navigation",
     [
+        "0. 🎓 Undergrad STEM Math & AI Tutorial",
         "1. Head-to-Head Model Evaluation",
         "2. Macro Regimes & Stress Testing",
         "3. Information Gain & Entropy",
@@ -105,9 +107,15 @@ st.sidebar.info(
 )
 
 # ---------------------------------------------------------
+# TAB 0: Undergrad STEM Math & AI Tutorial
+# ---------------------------------------------------------
+if selected_tab == "0. 🎓 Undergrad STEM Math & AI Tutorial":
+    render_tutorial_page()
+
+# ---------------------------------------------------------
 # TAB 1: Head-to-Head Model Evaluation
 # ---------------------------------------------------------
-if selected_tab == "1. Head-to-Head Model Evaluation":
+elif selected_tab == "1. Head-to-Head Model Evaluation":
     st.title("⚖️ Head-to-Head Model Comparison: Customer-Only vs. Macro-Aware")
     st.write(
         "A rigorous mathematical comparison between a standard borrower-only credit scoring model "

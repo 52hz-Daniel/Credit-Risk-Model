@@ -1,444 +1,448 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 
 def render_tutorial_page():
     """
     Renders the Undergrad STEM Tutorial Page:
-    Bridging intuition, mathematics, and code from first principles.
-    Designed for 1st/2nd year undergrad STEM students with an engaging tutor tone.
+    Academic, institutional quantitative finance curriculum bridging intuition,
+    mathematical proofs, and production code from first principles.
+    Designed for 1st/2nd year undergrad STEM students with an accessible tutor tone.
+    Strictly zero decorative emojis; aligned with the EQUITY-TWIN institutional design.
     """
     # Header & Tutor Introduction
     st.markdown("""
-    <div style="background: linear-gradient(135deg, #1E293B, #0F172A); padding: 30px; border-radius: 12px; border: 1px solid #334155; margin-bottom: 25px;">
-        <span style="background-color: #38BDF8; color: #0F172A; font-weight: 700; padding: 4px 12px; border-radius: 20px; font-size: 13px;">STEM UNDERGRAD TUTORIAL</span>
-        <h1 style="color: #F8FAFC; margin-top: 12px; margin-bottom: 8px; font-size: 32px;">The Complete Journey: From Intuition to Institutional AI Credit Strategy</h1>
-        <p style="color: #94A3B8; font-size: 16px; line-height: 1.6; margin-bottom: 0px;">
-            Hey there! Welcome to the math & quantitative lab. If you're a first or second-year STEM student (Computer Science, Math, Stats, Physics, or Engineering), you already know basic calculus, intro probability, and maybe some Python. But how do you go from classroom theory to solving real, multi-million-dollar financial decisions under uncertainty?
+    <div style="background-color: #FFFFFF; padding: 28px; border-radius: 8px; border: 1px solid #E2E8F0; margin-bottom: 24px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span style="background-color: #004AC6; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.05em;">PEDAGOGICAL SYLLABUS</span>
+            <span style="color: #64748B; font-family: 'JetBrains Mono', monospace; font-size: 11px;">MODULE 01.A // QUANTITATIVE FOUNDATIONS</span>
+        </div>
+        <h1 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 700; margin: 4px 0 10px 0; letter-spacing: -0.02em;">
+            From Mathematical First Principles to Institutional AI Credit Strategy
+        </h1>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; margin-bottom: 0;">
+            Welcome to the quantitative laboratory. As an undergraduate STEM student in mathematics, computer science, statistics, or engineering, you possess the foundations of differential calculus, introductory probability, and Python. This syllabus bridges the gap between classroom theory and multi-million-dollar institutional capital decisions under uncertainty.
             <br><br>
-            In this guide, we'll walk you through this entire project <b>step-by-step</b>. We won't just dump code on you. We will tell the <b>real story</b>: starting from the simplest intuitive question, discovering where basic models fail, and climbing the mathematical ladder until we have a battle-tested, regulation-compliant AI engine. Grab a coffee—let's dive in! ☕
+            We trace the complete evolution of credit risk: beginning from the basic volume dilemma, analyzing why naive predictive scoring triggers liquidity default spirals, and climbing the mathematical ladder until we formulate a fully calibrated, causally sound, and regulation-compliant quantitative engine.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Table of Contents / Roadmap
-    with st.expander("🗺️ Guided Tour: What We Will Learn Today", expanded=False):
+    # Syllabus Outline / Table of Contents
+    with st.expander("Syllabus Index & Guided Learning Path", expanded=False):
         st.markdown("""
-        1. **The Starting Dilemma**: Capital Markets vs. Retail Credit (The Volume Problem)
-        2. **Chapter 1: The Macro Weather** — Hamilton (1989) Markov-Switching Regimes
-        3. **Chapter 2: The Chaos Measurement** — Claude Shannon & Information Entropy
-        4. **Chapter 3: The Tree Whisperer** — XGBoost & The Danger of Overconfidence (Platt Scaling)
-        5. **Chapter 4: The Black Box & The Law** — OSFI Guideline E-23 & Scott Lundberg's SHAP
-        6. **Chapter 5: The Causal Revolution** — Moving from Prediction to Prescription (X-Learner & CATE)
-        7. **Chapter 6: The Competitor's Shadow** — Retail Game Theory & The Poaching Dilemma
-        8. **Chapter 7: The Virtual Society** — 24-Month Agent-Based Modeling (Mesa ABM)
-        9. **Curated Resources**: YouTube Lessons, Textbooks, and Research Papers
+        - **Prologue: The Volume Problem in Retail Credit** (Capital Markets vs. High-Volume Consumer Lending)
+        - **Chapter 1: Macroeconomic Regime Shifts** (Hamilton 1989 Markov-Switching Autoregression)
+        - **Chapter 2: Uncertainty Quantification** (Claude Shannon 1948 Information Entropy & Mutual Information)
+        - **Chapter 3: Calibrated Ensemble Learning** (Cost-Balanced XGBoost & Platt Logistic Scaling)
+        - **Chapter 4: Regulatory Governance & Explainability** (OSFI Guideline E-23 & Lloyd Shapley 1953 Theorem)
+        - **Chapter 5: Causal Inference & Intervention** (Potential Outcomes & Künzel et al. 2019 Multi-Arm X-Learner)
+        - **Chapter 6: Retail Game Theory** (Non-Cooperative Poaching Dynamics & Customer Lifetime Value)
+        - **Chapter 7: Macroeconomic Agent-Based Modeling** (Mesa 3.5 Virtual Society Simulation)
+        - **Appendix: Institutional Bibliography & Open Source Repositories**
         """)
 
     # --------------------------------------------------------------------------
     # PROLOGUE
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🏛️ Prologue: The Volume Dilemma")
-    
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">PROLOGUE</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">The Volume Problem in Retail Lending</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
     col_p1, col_p2 = st.columns([3, 2])
     with col_p1:
         st.write("""
-        Imagine you're the Chief Risk Officer at a major bank like RBC or TD. 
+        Consider the operational distinction between **Capital Markets** and **Retail Credit Cards**:
         
-        If you work in **Capital Markets**, you might lend **$500 Million** to an airline to buy ten Boeing 787s. You have a dedicated team of 15 senior financial analysts who spend 4 months inspecting flight logs, fuel price hedges, and corporate balance sheets. If the airline defaults, it's a catastrophe.
+        In **Capital Markets**, a commercial lender might extend a **$500 Million credit facility** to an airline purchasing ten commercial aircraft. A dedicated team of 15 senior quantitative analysts spends four months inspecting jet fuel hedge ratios, historical passenger yields, and corporate liquidity. If the borrower defaults, it represents a catastrophic institutional event.
         
-        Now step into **Retail Credit Cards**. You aren't dealing with 1 big borrower. You have **3,000,000 everyday citizens**, each asking for a **$5,000 credit limit**.
-        - You *cannot* hire an analyst for each applicant—the margins are far too thin.
-        - Your system must approve or reject an application in **200 milliseconds** when someone taps 'Apply' on their phone.
-        - If you are too cautious and reject too many people, you lose interest revenue and customer loyalty to rival banks.
-        - If you are too reckless, defaults will wipe out your capital.
+        In **Retail Credit Cards**, the lender manages **3,000,000 consumer accounts**, each with an average line of **$5,000**:
+        - Underwriting must execute programmatically within **200 milliseconds** via mobile application API.
+        - The marginal margin per account does not permit human analyst review.
+        - Excessively conservative underwriting rejects solvent borrowers, forfeiting interest margin to rival institutions.
+        - Excessively loose underwriting permits defaults that erode institutional capital reserves.
         
-        So the central challenge of retail credit is **a volume and probability optimization game**. Let's build the mathematics to solve it.
+        Consequently, consumer credit risk is fundamentally an **optimization under uncertainty** problem across large sample spaces.
         """)
     with col_p2:
-        st.info("""
-        **Key Takeaway**:
-        Retail credit risk is not about preventing *every* default. It is about mathematically maximizing the **risk-adjusted net margin**:
-        $$\\text{Net Margin} = \\text{Interest Revenue} - \\text{Expected Losses} - \\text{Operating Costs}$$
-        """)
+        st.markdown("""
+        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 3px solid #004AC6; padding: 14px; border-radius: 4px; margin-top: 10px;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6;">MATHEMATICAL OBJECTIVE</span>
+            <p style="font-size: 13px; color: #1E293B; margin-top: 6px; line-height: 1.5;">
+                Retail risk strategy does not eliminate default entirely; it maximizes risk-adjusted net economic margin:
+            </p>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #0F172A; background-color: #F8FAFC; padding: 8px; border-radius: 4px;">
+                Net Margin = Interest Income - Expected Losses - Attrition Penalties
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     # --------------------------------------------------------------------------
     # CHAPTER 1: MACRO REGIMES (HAMILTON MS-AR)
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🌦️ Chapter 1: The Macro Weather — When Good People Face Bad Times")
-    
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 01</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Macroeconomic Regime Shifts: Hamilton (1989) Markov Switching</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.write("""
-    ### The Intuitive Thought
-    When most beginners build a credit scoring model, they look only at the person: *What is their income? How old are they? Have they missed a bill?*
+    ### Intuitive Formulation
+    Standard credit scoring models evaluate borrower features in isolation: *monthly income, age, credit utilization, and repayment history*.
     
-    **Here is the flaw**: Nobody defaults in a vacuum! An honest software engineer making $120,000/year might have a 0.5% chance of default in a booming economy. But if the central bank hikes interest rates from 0.25% to 5.00%, tech startups lay off thousands, and mortgage payments double, that same person's default risk jumps to 15%.
+    This specification contains a structural flaw: **individual default risk is non-stationary and endogenous to the macroeconomic cycle**. A borrower earning $120,000 annually in a low-interest economic expansion exhibits an empirical default probability below 0.5%. If the central bank enacts a 450-basis-point policy rate tightening cycle and corporate payrolls contract, that identical borrower's default risk can surge above 12%.
     
-    Traditional statistical models assume that the economic relationship between variables is **static (stationary)**:
+    Standard regression specifications assume parameter stationarity:
     $$y_t = \\beta_0 + \\beta_1 x_t + \\epsilon_t$$
-    *In real life, this is like assuming the road conditions in Toronto are always sunny.* But the real world has **seasons**: sunny summer highways vs. black ice blizzards.
+    In empirical macroeconomics, this assumption fails because structural conditions alternate between distinct, persistent states.
     """)
 
-    st.markdown("### The Mathematical Breakthrough: Hamilton (1989) Markov-Switching")
     st.write("""
-    In 1989, quantitative economist **James D. Hamilton** published a revolutionary paper in *Econometrica*: 
-    **["A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle"](file:///Users/xiaoda/Cursor/Credit%20Risk/Research%20Reference/A%20New%20Approach%20to%20the%20Economic%20Analysis%20of%20Nonstationary%20Time%20Series%20and%20the%20%20Business%20Cycle.pdf)**.
+    ### Mathematical Foundation: Hamilton (1989) Markov-Switching Autoregression
+    In his 1989 *Econometrica* publication (*A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle*), James D. Hamilton formulated time series governed by an unobserved discrete state variable $S_t \\in \\{0, 1\\}$:
+    - **State 0 (Expansion / Calm)**: Low corporate credit spreads, stable labor markets, and low volatility.
+    - **State 1 (Contraction / Stress)**: Elevated high-yield credit spreads, contraction in liquidity, and heightened default frequencies.
     
-    Hamilton proposed that the economy is governed by an **unobserved hidden regime variable** $S_t \\in \\{0, 1\\}$:
-    - **Regime 0 (Calm / Expansion)**: Low credit spreads, steady employment, lower volatility.
-    - **Regime 1 (Stress / Contraction)**: High credit spreads, elevated inflation/rates, rising default rates.
-    
-    The equation for the macro indicator $y_t$ (e.g. US High Yield Credit Spread from FRED) switches regimes:
+    The observable macroeconomic indicator $y_t$ (e.g. US High Yield Option-Adjusted Spread from FRED) follows a regime-dependent autoregressive process:
     $$y_t = \\mu_{S_t} + \\sum_{j=1}^p \\phi_j (y_{t-j} - \\mu_{S_{t-j}}) + \\epsilon_t, \\quad \\epsilon_t \\sim \\mathcal{N}(0, \\sigma^2)$$
     
-    The transition between calm and stress is governed by a **Markov Transition Matrix** $\\mathbf{P}$:
+    The transition dynamics between economic states are parameterized by a stationary first-order Markov transition matrix $\\mathbf{P}$:
     $$\\mathbf{P} = \\begin{bmatrix} p_{00} & p_{01} \\\\ p_{10} & p_{11} \\end{bmatrix} = \\begin{bmatrix} \\mathbb{P}(S_t=0 \\mid S_{t-1}=0) & \\mathbb{P}(S_t=1 \\mid S_{t-1}=0) \\\\ \\mathbb{P}(S_t=0 \\mid S_{t-1}=1) & \\mathbb{P}(S_t=1 \\mid S_{t-1}=1) \\end{bmatrix}$$
     """)
 
-    # Interactive Transition Diagram / Demo
-    c1, c2 = st.columns([3, 2])
-    with c1:
+    col_m1, col_m2 = st.columns([3, 2])
+    with col_m1:
         st.markdown("""
         ```mermaid
         stateDiagram-v2
             direction LR
-            State0: State 0 (Calm Economy)
-            State1: State 1 (Systemic Stress)
-            State0 --> State0: p00 = 92% (Persistent Growth)
-            State0 --> State1: p01 = 8% (Shock / Rate Hike)
-            State1 --> State1: p11 = 85% (Prolonged Recession)
-            State1 --> State0: p10 = 15% (Recovery)
+            State0: State 0 (Expansion Regime)
+            State1: State 1 (Contraction Regime)
+            State0 --> State0: p00 = 0.92 (Cycle Persistence)
+            State0 --> State1: p01 = 0.08 (Macro Shock)
+            State1 --> State1: p11 = 0.85 (Prolonged Recession)
+            State1 --> State0: p10 = 0.15 (Economic Recovery)
         ```
         """)
-    with c2:
-        st.info("""
-        **No Look-Ahead Bias Safeguard**:
-        In regulatory risk, you cannot use *smoothed* probabilities (which use future data $t+1, \\dots, T$). 
-        You must strictly use **filtered marginal probabilities**:
-        $$\\text{regime\\_prob\\_stress}_t = \\mathbb{P}(S_t=1 \\mid \\mathcal{F}_t)$$
-        conditioned *only* on past and current macro data $\\mathcal{F}_t$.
-        """)
+    with col_m2:
+        st.markdown("""
+        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 14px; border-radius: 4px;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6;">STATUTORY REQUIREMENT</span>
+            <p style="font-size: 12px; color: #475569; margin-top: 6px; line-height: 1.5;">
+                Under regulatory risk auditing (OSFI E-23 / Basel Committee), full-sample smoothed probabilities cannot be employed in live decisioning due to look-ahead bias ($t+1 \\dots T$).
+                <br><br>
+                Production pipelines must compute <b>filtered marginal probabilities</b>:
+                <br>
+                <code>P(S_t = 1 | F_t)</code>
+                <br>
+                conditioned strictly upon information available at time <code>t</code>.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("""
-    💡 **Further Learning Links**:
-    - 📖 [Statsmodels Markov Regression Guide](https://www.statsmodels.org/stable/examples/notebooks/generated/markov_regression.html) (The exact library we used)
-    - 🎥 [Khan Academy: Introduction to Markov Chains](https://www.khanacademy.org/math/linear-algebra)
-    - 📄 [Hamilton (1990) Analysis of Time Series Subject to Changes in Regime](file:///Users/xiaoda/Cursor/Credit%20Risk/Research%20Reference/ANALYSIS%20OF%20TIME%20SERIES%20SUBJECT%20TO%20%20%20CHANGES%20IN%20REGIME.pdf)
+    **Academic References**:
+    - Statsmodels Markov Regression Specification: [statsmodels.tsa.regime_switching](https://www.statsmodels.org/stable/examples/notebooks/generated/markov_regression.html)
+    - Hamilton, J. D. (1989). *A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle*. Econometrica, 57(2), 357-384.
     """)
 
     # --------------------------------------------------------------------------
     # CHAPTER 2: SHANNON ENTROPY & INFORMATION GAIN
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🎲 Chapter 2: The Chaos Measurement — Claude Shannon & Information Theory")
-    
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 02</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Uncertainty Quantification: Shannon Entropy & Information Gain</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.write("""
-    ### The Intuitive Thought
-    You have downloaded 30,000 real credit customer records. You have dozens of variables: Age, Sex, Marital Status, Education, Limit, Bill Amounts, Payment Amounts, Missed Payments.
+    ### Intuitive Formulation
+    Given a portfolio dataset of 30,000 accounts spanning dozens of candidate variables (credit limits, payment schedules, demographic attributes, and macro indices), a quantitative team must determine which covariates provide statistically robust signal versus non-predictive noise.
     
-    Which of these variables actually contain **pure predictive signal**, and which ones are just **useless noise**?
+    Linear correlation ($r$) is insufficient for credit data because default risk behaves non-linearly. A borrower with a 15% debt-to-income ratio has roughly the same low default risk as one with 20%, but when utilization exceeds 85%, default probability scales non-linearly.
     
-    In traditional data science, people often compute linear correlation ($r$). But correlation *only* measures straight lines! If a relationship is non-linear (e.g., risk is low for low balance, medium for medium balance, but explodes exponentially for high balance), correlation fails completely.
+    ### Mathematical Foundation: Claude Shannon (1948)
+    In *A Mathematical Theory of Communication* (1948), Claude Shannon defined the expected information content, or entropy, of a discrete random variable $Y$:
+    $$H(Y) = - \\sum_{y \\in \\mathcal{Y}} p(y) \\log_2 p(y) \\quad \\text{[units: bits]}$$
+    For a binary default indicator $Y \\in \\{0: \\text{Non-Default}, 1: \\text{Default}\\}$ with default rate $p$:
+    $$H(Y) = -p \\log_2(p) - (1-p) \\log_2(1-p)$$
     """)
 
-    st.markdown("### The Mathematical Breakthrough: Shannon Information Entropy (1948)")
-    st.write("""
-    In 1948, **Claude Shannon** (the father of the digital age) asked: *How do you measure the amount of uncertainty or 'surprise' in an event?*
-    
-    For a binary random variable $Y \\in \\{0: \\text{Pays}, 1: \\text{Defaults}\\}$ with default probability $p$:
-    $$H(Y) = -p \\log_2(p) - (1-p) \\log_2(1-p) \\quad \\text{[units: bits]}$$
-    """)
-
-    # Interactive Entropy Curve Calculator
-    st.subheader("🎛️ Interactive Mini-Lab: Play with Shannon Entropy")
+    # Interactive Entropy Curve
+    st.markdown("#### Interactive Empirical Laboratory: Shannon Entropy Function H(p)")
     col_e1, col_e2 = st.columns([1, 2])
     with col_e1:
-        p_user = st.slider("Probability of Default (p)", min_value=0.01, max_value=0.99, value=0.22, step=0.01)
+        p_user = st.slider("Observed Default Probability (p)", min_value=0.01, max_value=0.99, value=0.22, step=0.01)
         h_val = - (p_user * np.log2(p_user) + (1 - p_user) * np.log2(1 - p_user))
-        st.metric("Shannon Entropy H(Y)", f"{h_val:.4f} bits")
-        st.caption("Notice how entropy peaks at p=0.50 (complete coin-flip chaos) and drops to 0 when an outcome is completely guaranteed!")
+        st.metric("Portfolio Entropy H(Y)", f"{h_val:.4f} bits")
+        st.caption("Maximum uncertainty occurs at p=0.50 (1.0 bit: uniform randomness). At p=0.22, portfolio baseline entropy is 0.757 bits.")
     with col_e2:
         p_curve = np.linspace(0.001, 0.999, 100)
         h_curve = - (p_curve * np.log2(p_curve) + (1 - p_curve) * np.log2(1 - p_curve))
         fig_ent = go.Figure()
-        fig_ent.add_trace(go.Scatter(x=p_curve, y=h_curve, mode="lines", name="H(Y)", line=dict(color="#38BDF8", width=3)))
-        fig_ent.add_trace(go.Scatter(x=[p_user], y=[h_val], mode="markers", name="Your Portfolio Point", marker=dict(color="#F43F5E", size=12)))
-        fig_ent.update_layout(title="Shannon Entropy Curve H(p) in Bits", xaxis_title="Default Probability p", yaxis_title="Entropy (Bits)", template="plotly_dark", height=280)
+        fig_ent.add_trace(go.Scatter(x=p_curve, y=h_curve, mode="lines", name="H(p)", line=dict(color="#004AC6", width=2.5)))
+        fig_ent.add_trace(go.Scatter(x=[p_user], y=[h_val], mode="markers", name="Selected Operating Point", marker=dict(color="#BA1A1A", size=10)))
+        fig_ent.update_layout(
+            title="Shannon Binary Entropy Curve H(p)",
+            xaxis_title="Default Frequency p",
+            yaxis_title="Entropy (Bits)",
+            template="plotly_white",
+            height=260,
+            margin=dict(l=40, r=40, t=40, b=40)
+        )
         st.plotly_chart(fig_ent, use_container_width=True)
 
-    st.markdown("### How We Used This: Information Gain (Feature Screening)")
     st.write("""
-    If we know a borrower's attribute $X$ (e.g. recent missed payment status), how much does that **reduce our uncertainty** about whether they will default? That is **Information Gain (Mutual Information)**:
+    ### Information Gain (Mutual Information)
+    To rank features without model-specific inductive bias, we evaluate how conditioning on covariate $X$ reduces the entropy of target $Y$:
     $$IG(Y, X) = H(Y) - H(Y \\mid X) = H(Y) - \\sum_{x \\in \\mathcal{X}} p(x) H(Y \\mid X = x)$$
-    
-    When we ran this on our 30,000 real accounts in [`models/feature_engineering.py`](file:///Users/xiaoda/Cursor/Credit%20Risk/models/feature_engineering.py), we uncovered a massive real-world truth:
     """)
 
     ig_table = pd.DataFrame([
-        {"Feature": "pay_recent_delinquency (Latest missed payment)", "Information Gain (Bits)": 0.1084, "Significance": "⭐⭐⭐⭐⭐ Top Predictor"},
-        {"Feature": "pay_max_delinquency (Worst 6m delinquency)", "Information Gain (Bits)": 0.0965, "Significance": "⭐⭐⭐⭐⭐ Core Behavior"},
-        {"Feature": "avg_pay_amt (Monthly repayment velocity)", "Information Gain (Bits)": 0.0228, "Significance": "⭐⭐⭐ Solvency Buffer"},
-        {"Feature": "limit_bal (Assigned credit limit)", "Information Gain (Bits)": 0.0220, "Significance": "⭐⭐⭐ Exposure Size"},
-        {"Feature": "pay_to_bill_ratio (Cash flow coverage)", "Information Gain (Bits)": 0.0183, "Significance": "⭐⭐⭐ Liquidity Health"},
-        {"Feature": "education (College / High School)", "Information Gain (Bits)": 0.0042, "Significance": "⭐ Negligible Signal"},
-        {"Feature": "age (Borrower age)", "Information Gain (Bits)": 0.0026, "Significance": "⭐ Barely Above Noise"},
-        {"Feature": "marriage (Marital status)", "Information Gain (Bits)": 0.0007, "Significance": "❌ Pure Noise"}
+        {"Covariate": "pay_recent_delinquency", "Information Gain (Bits)": 0.1084, "Empirical Status": "[Top Predictor] Direct behavioral default indicator"},
+        {"Covariate": "pay_max_delinquency", "Information Gain (Bits)": 0.0965, "Empirical Status": "[Core Predictor] Multi-month rolling solvency stress"},
+        {"Covariate": "avg_pay_amt", "Information Gain (Bits)": 0.0228, "Empirical Status": "[Solvency Buffer] Monthly cash flow capacity"},
+        {"Covariate": "limit_bal", "Information Gain (Bits)": 0.0220, "Empirical Status": "[Exposure Size] Underwritten liquidity threshold"},
+        {"Covariate": "pay_to_bill_ratio", "Information Gain (Bits)": 0.0183, "Empirical Status": "[Liquidity Health] Repayment coverage velocity"},
+        {"Covariate": "education", "Information Gain (Bits)": 0.0042, "Empirical Status": "[Negligible Signal] Weak separation capacity"},
+        {"Covariate": "age", "Information Gain (Bits)": 0.0026, "Empirical Status": "[Noise Floor] Near-zero standalone mutual information"},
+        {"Covariate": "marriage", "Information Gain (Bits)": 0.0007, "Empirical Status": "[Noise Floor] Zero statistical separation capacity"}
     ])
     st.dataframe(ig_table, use_container_width=True)
-
-    st.markdown("""
-    💡 **Further Learning Links**:
-    - 🎥 [3Blue1Brown: A Short Introduction to Entropy & Information Theory](https://www.youtube.com/watch?v=2s3aJfRr9gE)
-    - 📖 [Claude Shannon (1948) The Mathematical Theory of Communication](https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication)
-    """)
 
     # --------------------------------------------------------------------------
     # CHAPTER 3: XGBOOST & PROBABILITY CALIBRATION
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🌲 Chapter 3: The Tree Whisperer — XGBoost & The Danger of Overconfidence")
-    
-    st.write("""
-    ### The Intuitive Thought
-    How do computers make decisions? A single **Decision Tree** is just a flowchart:
-    - *Is recent delinquency > 1 month?* $\\to$ Yes: High Risk, No: Check next condition.
-    - *Is utilization > 80%?* $\\to$ Yes: High Risk, No: Safe.
-    
-    Where does a tree decide where to make a cut? **It cuts precisely where Information Gain is maximized!**
-    
-    A single decision tree, however, overfits easily. So in modern credit risk, we use **XGBoost (Extreme Gradient Boosting)**:
-    - We build an ensemble of 150 trees.
-    - Each tree does not start from scratch. Tree 2 is trained to predict the **residuals (errors)** of Tree 1. Tree 3 predicts the errors of Tree 2, and so forth.
-    """)
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 03</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Ensemble Learning & Probability Calibration: XGBoost & Platt Scaling</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("### The Hidden Trap: Why Raw AI Probabilities Lie (Calibration)")
     st.write("""
-    In retail banking, only $\\approx 22\\%$ of customers default. If an algorithm simply guessed *"nobody defaults"*, it would be 78% accurate while losing millions of dollars!
+    ### Gradient Boosted Decision Trees (XGBoost)
+    Decision trees recursively partition the covariate space $\\mathcal{X}$ along dimensions that maximize information gain or minimize cross-entropy loss. In credit risk, single trees overfit rapidly; therefore, we employ **Extreme Gradient Boosting (XGBoost)**:
+    $$\\hat{y}_i = \\sum_{k=1}^K f_k(x_i), \\quad f_k \\in \\mathcal{F}$$
+    Each subsequent tree $f_k$ is fitted to the pseudo-residuals of the prior ensemble via second-order Taylor expansion of the objective function:
+    $$\\mathcal{L}^{(t)} \\approx \\sum_{i=1}^N \\left[ g_i f_t(x_i) + \\frac{1}{2} h_i f_t^2(x_i) \\right] + \\Omega(f_t)$$
+    where $g_i = \\partial_{\\hat{y}^{(t-1)}} l(y_i, \\hat{y}^{(t-1)})$ and $h_i = \\partial^2_{\\hat{y}^{(t-1)}} l(y_i, \\hat{y}^{(t-1)})$.
     
-    To fix this, we apply **cost-sensitive balancing**:
-    $$\\text{scale\\_pos\\_weight} = \\frac{N_{\\text{neg}}}{N_{\\text{pos}}} = \\frac{18,691}{5,309} \\approx 3.52$$
-    This forces the tree to care 3.52 times more about catching a defaulting borrower.
+    ### Cost-Sensitive Weighting & The Calibration Hazard
+    In consumer credit portfolios, defaults are relatively rare (empirical event rate $\\approx 22\\%$, or lower in prime portfolios). To avoid degenerate convergence to the majority class, we assign cost-sensitive gradient scaling:
+    $$\\text{scale\\_pos\\_weight} = \\frac{N_{\\text{negative}}}{N_{\\text{positive}}} = \\frac{18,691}{5,309} \\approx 3.52$$
     
-    **The unintended consequence:** The raw probabilities output by the tree are now pushed violently toward 1.0! A raw score of 0.85 does *not* mean 85% of borrowers will default. In financial engineering, this is catastrophic.
+    **The Calibration Hazard**: While `scale_pos_weight` maximizes ranking metrics (ROC-AUC), it structurally skews the raw sigmoid outputs away from true mathematical probabilities. A raw output of $0.80$ no longer corresponds to an 80% default rate. In capital provisioning, uncalibrated risk probabilities lead to catastrophic mispricing.
     
-    ### The Mathematical Cure: Out-of-Fold Platt Scaling
-    In 1999, John Platt formulated **Platt Scaling**: We train a sigmoid logistic mapper over the tree's margin log-odds $f(x)$ on validation holdouts:
+    ### Mathematical Remedy: Out-of-Fold Platt Logistic Calibration (1999)
+    To restore probabilistic fidelity, we fit a univariate logistic mapping over the raw tree ensemble log-odds margin $f(x)$ using out-of-fold validation splits:
     $$\\hat{p}_{\\text{calibrated}} = \\frac{1}{1 + \\exp(A \\cdot f(x) + B)}$$
+    where parameters $A$ and $B$ are estimated via maximum likelihood on holdout partitions.
     """)
 
     col_c1, col_c2 = st.columns(2)
     with col_c1:
-        st.metric("Expected Calibration Error (ECE)", "0.0170 (1.7%)", "Passing OSFI E-23 Decile Test")
-        st.caption("Across every single decile (from 0-10% risk to 90-100% risk), our predicted probability deviates from the real observed default frequency by less than 1.7 percentage points.")
+        st.markdown("""
+        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 16px; border-radius: 6px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">EXPECTED CALIBRATION ERROR (ECE)</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: #006C4A; margin: 4px 0;">1.71%</div>
+            <div style="font-size: 12px; color: #475569;">OSFI E-23 Standard: &lt; 3.00% across deciles [STATUS: PASS]</div>
+        </div>
+        """, unsafe_allow_html=True)
     with col_c2:
-        st.metric("Area Under ROC Curve (ROC-AUC)", "0.7800", "Strong Separation")
-        st.caption("78% probability that a randomly chosen defaulter has a higher predicted risk score than a randomly chosen non-defaulter.")
-
-    st.markdown("""
-    💡 **Further Learning Links**:
-    - 🎥 [StatQuest: XGBoost Part 1 (Regression & Classification Intuition)](https://www.youtube.com/watch?v=OtD8wVxBQgE)
-    - 📖 [Scikit-Learn Guide on Probability Calibration](https://scikit-learn.org/stable/modules/calibration.html)
-    - 📄 [Hastie, Tibshirani, Friedman: The Elements of Statistical Learning](file:///Users/xiaoda/Cursor/Credit%20Risk/Research%20Reference/The%20Elements%20of%20Statistical%20Learning.pdf)
-    """)
+        st.markdown("""
+        <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 16px; border-radius: 6px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">RECEIVER OPERATING CHARACTERISTIC (ROC-AUC)</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: #004AC6; margin: 4px 0;">0.7800</div>
+            <div style="font-size: 12px; color: #475569;">Separation power validated on out-of-sample holdout (N=6,000)</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     # --------------------------------------------------------------------------
     # CHAPTER 4: SHAP EXPLAINABILITY (COOPERATIVE GAME THEORY)
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🔍 Chapter 4: The Black Box & The Law — Scott Lundberg & SHAP")
-    
-    st.write("""
-    ### The Legal Mandate (OSFI Guideline E-23 & Adverse Action)
-    Imagine a young professional applies for a credit card. The XGBoost model calculates a 42% default risk and rejects them.
-    
-    Under Canadian banking regulation (**OSFI Guideline E-23**) and US Federal Law (**Equal Credit Opportunity Act**), a bank **cannot** say:
-    > *"Sorry, our neural network with 10 million parameters said no, but we don't know why."*
-    
-    The bank is legally required to send an **Adverse Action Notice** citing the exact top 4 reasons for rejection. How do you extract exact, fair reasons out of a non-linear ensemble of 150 decision trees?
-    """)
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 04</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Statutory Model Governance & Explainability: OSFI E-23 & TreeSHAP</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("### The Mathematical Solution: Lloyd Shapley's 1953 Nobel Prize Formula")
     st.write("""
-    In 1953, mathematician **Lloyd Shapley** solved how to fairly divide the winnings of a coalition of players in a cooperative game. In 2017, **Scott Lundberg** applied this to machine learning in the landmark paper:
-    **["A Unified Approach to Interpreting Model Predictions" (NeurIPS 2017)](file:///Users/xiaoda/Cursor/Credit%20Risk/Research%20Reference/A%20Unified%20Approach%20to%20Interpreting%20Model%20%20Predictions.pdf)**.
+    ### Statutory Mandate: OSFI Guideline E-23 & Adverse Action Notices
+    Under Canadian federal banking standards (**OSFI Guideline E-23**) and the US **Equal Credit Opportunity Act (ECOA)**, algorithmic credit underwriting cannot operate as an opaque black box. When an applicant is denied credit or experiences a credit limit cut, the institution must generate an **Adverse Action Notice** citing the primary explanatory factors.
     
-    Each feature (income, credit limit, missed payment) is treated as a **player in a game**, and the final predicted default probability is the **payout**:
+    ### Mathematical Solution: Lloyd Shapley's (1953) Cooperative Game Theory
+    In 1953, Lloyd Shapley solved the problem of fairly distributing collective payoffs among participating players in a coalition. Scott Lundberg (NeurIPS 2017) adapted this framework to machine learning via **TreeSHAP**:
+    
+    Each covariate $i \\in F$ acts as a player, and the model prediction $f(x)$ is the coalition payoff. The unique attribution values $\\phi_i(x)$ satisfying all four fairness axioms are given by:
     $$\\phi_i(x) = \\sum_{S \\subseteq F \\setminus \\{i\\}} \\frac{|S|!(|F| - |S| - 1)!}{|F|!} \\left[ f(S \\cup \\{i\\}) - f(S) \\right]$$
     
-    **The 3 Axioms of Fairness:**
-    1. **Efficiency**: The sum of all SHAP values equals the difference between the model's prediction and the base population rate: $\\sum \\phi_i = f(x) - \\mathbb{E}[f(X)]$.
-    2. **Symmetry**: If two features contribute equally across all subsets, their SHAP values are identical.
-    3. **Dummy / Null**: A feature with no impact receives exactly zero attribution ($\phi_i = 0$).
-    """)
-
-    st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/shap_diagram.png", caption="TreeSHAP: Decomposing tree ensemble output into additive Shapley values")
-
-    st.markdown("""
-    💡 **Further Learning Links**:
-    - 🎥 [Scott Lundberg: Explaining Machine Learning Predictions with SHAP (NeurIPS Talk)](https://www.youtube.com/watch?v=B-c8tIgchu0)
-    - 💻 [Official slundberg/shap GitHub Repository](https://github.com/slundberg/shap)
+    **The Four Fundamental Shapley Axioms**:
+    1. **Efficiency**: $\\sum_{i=1}^{|F|} \\phi_i(x) = f(x) - \\mathbb{E}[f(X)]$. The sum of all attributions matches the difference between individual prediction and baseline expectation.
+    2. **Symmetry**: If $f(S \\cup \\{i\\}) = f(S \\cup \\{j\\})$ for all $S$, then $\\phi_i(x) = \\phi_j(x)$.
+    3. **Dummy / Null**: If $f(S \\cup \\{i\\}) = f(S)$ for all $S$, then $\\phi_i(x) = 0$.
+    4. **Additivity**: For ensemble sum $f + g$, $\\phi_i(f + g) = \\phi_i(f) + \\phi_i(g)$.
     """)
 
     # --------------------------------------------------------------------------
     # CHAPTER 5: CAUSAL INFERENCE (X-LEARNER)
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🎯 Chapter 5: The Causal Revolution — From Prediction to Prescription")
-    
-    st.write("""
-    ### The Doctor's Dilemma
-    This is the most critical conceptual leap in modern artificial intelligence:
-    
-    > **Prediction is NOT Strategy.**
-    
-    Suppose an AI predicts that a patient with pneumonia has an 80% mortality risk. That is a **prediction**.
-    Does that tell the doctor *what medication to prescribe*? No! If the doctor gives the wrong drug, the patient dies faster.
-    
-    In banking:
-    - XGBoost tells you: *"Customer #120 has a 35% chance of default."*
-    - The traditional bank manager panics and **cuts their credit limit by 50%**.
-    - What happens? The customer needed that credit line to pay rent while waiting for their next paycheck. By cutting their limit, the bank **forced them into immediate bankruptcy**!
-    """)
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 05</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Causal Inference & Intervention: Multi-Arm X-Learner</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("### The Fundamental Problem of Causal Inference")
     st.write("""
-    For any borrower, there exist multiple **Potential Outcomes** (Neyman-Rubin Causal Model):
-    - $Y_i(0)$: Will they default if we **Do Nothing**?
-    - $Y_i(1)$: Will they default if we **Cut their Limit by 20%**?
-    - $Y_i(2)$: Will they default if we give them a **3-Month Payment Holiday**?
+    ### Conceptual Principle: Prediction is Not Strategy
+    A standard predictive model computes conditional expectation:
+    $$\\mathbb{E}[Y \\mid X = x]$$
+    This answers: *"What is the probability of default given borrower characteristics $x$?"*
     
-    You can only apply ONE action in real life. You **never observe the counterfactual**!
-    We need to estimate the **Conditional Average Treatment Effect (CATE)**:
+    In risk policy, this prediction is insufficient. If a bank observes a high default risk and responds by reducing the borrower's credit limit by 50%, it removes their liquidity cushion. For cash-constrained borrowers, this intervention **forces an immediate default that would not have occurred under temporary forbearance**.
+    
+    To evaluate policy actions, we must estimate **treatment counterfactuals** within the Neyman-Rubin potential outcomes framework:
+    - $Y_i(0)$: Default outcome under **Control (Do Nothing)**
+    - $Y_i(1)$: Default outcome under **Limit Cut (20% reduction)**
+    - $Y_i(2)$: Default outcome under **Payment Holiday (3-month forbearance)**
+    
+    We seek the **Conditional Average Treatment Effect (CATE)**:
     $$\\tau_{a,0}(x) = \\mathbb{E}[Y(a) - Y(0) \\mid X = x]$$
-    """)
-
-    st.markdown("### The Algorithm: Multi-Arm X-Learner (Künzel et al. PNAS 2019)")
-    st.write("""
-    In [`models/causal_engine.py`](file:///Users/xiaoda/Cursor/Credit%20Risk/models/causal_engine.py), we implemented the **X-Learner** from the prestigious paper:
-    **["Metalearners for estimating heterogeneous treatment effects using machine learning"](file:///Users/xiaoda/Cursor/Credit%20Risk/Research%20Reference/Metalearners%20for%20estimating%20heterogeneous%20treatment%20%20effects%20using%20machine%20learning.pdf)**.
+    
+    ### Algorithmic Architecture: Multi-Arm X-Learner (Künzel et al. 2019)
+    The X-Learner overcomes severe sample size imbalance between treatment arms via a four-stage estimation procedure:
     """)
 
     st.markdown("""
     ```mermaid
     flowchart TD
-        Stage1["Stage 1: Base Outcome Models<br/>Train mu_0(x) on Control and mu_1(x) on Treated"]
-        Stage2["Stage 2: Counterfactual Imputation<br/>D_1 = Y_1 - mu_0(X_1) and D_0 = mu_1(X_0) - Y_0"]
-        Stage3["Stage 3: Second-Stage Effect Regressors<br/>Train tau_1(x) on Treated and tau_0(x) on Control"]
-        Stage4["Stage 4: Propensity Weighting<br/>tau(x) = e(x)*tau_0(x) + (1 - e(x))*tau_1(x)"]
-        Stage1 --> Stage2 --> Stage3 --> Stage4
+        S1["Stage 1: Base Outcome Models<br/>Train mu_0(x) on Control and mu_a(x) on Treatment Arm a"]
+        S2["Stage 2: Counterfactual Imputation<br/>D_a = Y_a - mu_0(X_a) and D_0 = mu_a(X_0) - Y_0"]
+        S3["Stage 3: Second-Stage Treatment Effect Models<br/>Fit tau_a(x) on Treated and tau_0(x) on Control"]
+        S4["Stage 4: Propensity Score Weighting<br/>tau_a,0(x) = e(x) tau_0(x) + (1 - e(x)) tau_a(x)"]
+        S1 --> S2 --> S3 --> S4
     ```
     """)
 
-    st.success("""
-    **Real Discovery from Our Dataset**:
-    - For borrowers undergoing severe liquidity distress, **Payment Holiday (T=2)** drops default probability by **7.4%** by providing a cash runway.
-    - For borrowers with high discretionary spending, **Limit Cut (T=1)** saves money without pushing them over the edge.
-    """)
-
-    st.markdown("""
-    💡 **Further Learning Links**:
-    - 📖 [Judea Pearl: The Book of Why — The New Science of Cause and Effect](https://en.wikipedia.org/wiki/The_Book_of_Why)
-    - 💻 [Uber CausalML Library Reference](https://github.com/uber/causalml)
-    - 💻 [Microsoft EconML Library Reference](https://github.com/py-why/EconML)
+    st.write("""
+    **Empirical Findings on N=30,000 Master Dataset**:
+    - **Liquidity-Distressed Cohort**: Granting a Payment Holiday ($a=2$) yields $\\hat{\\tau}_{2,0}(x) = -0.074$ (a **7.4% reduction in default rate**), preventing destructive loan write-offs.
+    - **Over-Leveraged Discretionary Spenders**: Implementing a Limit Cut ($a=1$) reduces credit exposure without accelerating insolvency.
     """)
 
     # --------------------------------------------------------------------------
     # CHAPTER 6: RETAIL GAME THEORY (POACHING)
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## ♟️ Chapter 6: The Competitor's Shadow — Retail Game Theory")
-    
-    st.write("""
-    ### The Blind Spot of Isolated Optimization
-    If you only optimize default risk, you make foolish business mistakes.
-    
-    Suppose Customer #5 has a $50,000 credit limit, uses only 17% of it, pays in full every month, and has a 750 credit score.
-    - Causal AI says: *"Cutting their limit to $40,000 drops default risk from 8.4% to 5.7%."*
-    - But what does the customer do when they get an SMS saying: *"We have reduced your credit limit"*?
-    - **They get furious, cancel their card, and switch to American Express or RBC!**
-    
-    This is **Competitor Poaching Risk**.
-    """)
-
-    st.markdown("### The Game-Theoretic Expected Profit Equation")
-    st.write("""
-    In [`models/retail_game_theory.py`](file:///Users/xiaoda/Cursor/Credit%20Risk/models/retail_game_theory.py), we model this as a non-cooperative game between our bank and rival lenders. We formulate the **Net Objective Function**:
-    $$\\pi^*(x) = \\arg\\max_{t \\in \\{0, 1, 2\\}} \\left[ \\underbrace{\\text{Net Interest Margin}(t)}_{\\text{Revenue}} - \\underbrace{\\hat{P}(\\text{default} \\mid t) \\cdot \\text{EAD} \\cdot \\text{LGD}}_{\\text{Expected Default Loss}} - \\underbrace{P_{\\text{poach}}(t) \\cdot \\text{Customer LTV}}_{\\text{Attrition Penalty}} \\right]$$
-    
-    When we include Customer Lifetime Value ($LTV$), the optimal strategy for prime customers flips back to **Do Nothing (Control)**, preserving over **$700 in net profit** per customer that would otherwise be destroyed by naive risk cuts!
-    """)
-
     st.markdown("""
-    💡 **Further Learning Links**:
-    - 🎥 [Yale University Game Theory Course (Prof. Ben Polak)](https://www.youtube.com/watch?v=nM3rTU9ci88)
-    - 📖 [Avinash Dixit & Barry Nalebuff: Thinking Strategically](https://en.wikipedia.org/wiki/Thinking_Strategically)
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 06</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Retail Game Theory: Competitive Poaching & Customer Lifetime Value</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.write("""
+    ### The Multi-Lender Strategic Equilibrium
+    Credit decisions do not occur in an isolated monopoly. When an underwriter reduces a borrower's credit line, the borrower does not absorb the utility loss passively. If the customer possesses a prime credit history, rival financial institutions actively solicit balance transfers.
+    
+    If the bank applies a precautionary 20% limit reduction to a prime customer ($utilization < 20\\%$), default risk marginally declines from 8.4% to 5.7%. However, the adverse action induces customer dissatisfaction, triggering voluntary card closure and balance transfer to a competing institution (**Competitor Poaching Risk**).
+    
+    ### The Net Objective Optimization Equation
+    To prevent value-destroying policy decisions, we formulate the lender's action choice as a game-theoretic expected profit optimization problem incorporating **Customer Lifetime Value (LTV)**:
+    $$\\pi^*(x) = \\arg\\max_{t \\in \\{0, 1, 2\\}} \\left[ \\underbrace{\\text{Net Interest Margin}(t)}_{\\text{Lending Revenue}} - \\underbrace{\\hat{P}(\\text{default} \\mid t) \\cdot \\text{EAD} \\cdot \\text{LGD}}_{\\text{Expected Default Loss}} - \\underbrace{P_{\\text{poach}}(t) \\cdot \\text{LTV}}_{\\text{Attrition Penalty}} \\right]$$
+    
+    Incorporating the attrition term $P_{\\text{poach}}(t) \\cdot \\text{LTV}$ mathematically preserves prime borrower lines, retaining over **$700 in net lifetime margin per account** that standard risk scoring systematically eliminates.
     """)
 
     # --------------------------------------------------------------------------
     # CHAPTER 7: AGENT-BASED MODELING (ABM)
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 🌐 Chapter 7: The Virtual Society — 24-Month Agent-Based Simulation (Mesa)")
-    
-    st.write("""
-    ### Why Static Equations Aren't Enough
-    In economics, closed-form equations fail when feedback loops exist. When thousands of people lose jobs, bankruptcies cascade, banks tighten credit, which shrinks the economy further.
-    
-    To prove that our Causal AI strategy works over time, we built a **digital twin of the economy** using the **Mesa 3.5 Agent-Based Modeling framework** in [`simulation/abm_engine.py`](file:///Users/xiaoda/Cursor/Credit%20Risk/simulation/abm_engine.py):
-    - **1,000 autonomous `CustomerAgents`** receiving paychecks, paying expenses, paying credit card balances, and facing macroeconomic shocks.
-    - A **`BankAgent`** choosing between:
-      1. *Traditional Strategy*: Blanket 50% limit cuts whenever a bill is missed.
-      2. *Causal AI Strategy*: Targeted forbearance (holidays) + targeted limit cuts + poaching defense.
-    - An economic clock running for **24 simulated months**, driven by real Bank of Canada interest rate and spread cycles.
-    """)
-
-    # ABM Headline Results
-    st.subheader("🏆 The Final 24-Month Scoreboard")
-    k1, k2, k3 = st.columns(3)
-    with k1:
-        st.metric("Defaults Averted", "51 Borrowers", "-25.2% Fewer Bankruptcies")
-    with k2:
-        st.metric("Total Profit Lift", "+$3,406,235", "+42.8% Higher Retained Margin")
-    with k3:
-        st.metric("Simulation Velocity", "1.8 Seconds", "Fully Vectorized Batch Execution")
-
     st.markdown("""
-    💡 **Further Learning Links**:
-    - 📖 [Project Mesa: Agent-based modeling in Python](https://mesa.readthedocs.io/latest/)
-    - 📖 [Epstein & Axtell: Growing Artificial Societies (MIT Press)](https://mitpress.mit.edu/9780262550253/growing-artificial-societies/)
-    - 🏛️ [Bank of Italy: BeforeIT.jl Institutional Macroeconomic Agent-Based Framework](file:///Users/xiaoda/Cursor/Credit%20Risk/Reference%20Git%20Repo/BeforeIT.jl)
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">CHAPTER 07</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Dynamic Economic Simulation: 24-Month Agent-Based Digital Twin (Mesa)</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.write("""
+    ### Why Closed-Form Equations Fail Over Time
+    Static econometric regressions assume that market conditions remain constant following an intervention. In reality, credit cycles exhibit endogenous feedback loops: rising interest rates increase debt burdens, which elevates default frequencies, inducing banks to restrict credit, further contracting aggregate demand.
+    
+    To evaluate long-run portfolio performance under stress, we implemented a full **Agent-Based Model (ABM)** using the **Mesa 3.5 framework**:
+    - **1,000 Autonomous `CustomerAgents`**: Receiving monthly income, deducting basic consumption expenses, managing revolving balances, and experiencing idiosyncratic liquidity shocks.
+    - **Institutional `BankAgent`**: Executing credit strategy policies under two distinct operational paradigms:
+      1. *Traditional Scoring Rule*: Punitive 50% limit cuts upon first observed delinquency.
+      2. *Causal AI Strategy*: Targeted payment moratoriums, surgical line cuts, and poaching-defense retention.
+    - **24-Month Economic Horizon**: Parameterized by Bank of Canada policy rate trajectories and FRED credit spreads.
     """)
+
+    # Summary Results Box
+    st.markdown("""
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; padding: 18px; border-radius: 6px; margin: 16px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #004AC6; margin-bottom: 12px;">
+            24-MONTH AGENT-BASED SIMULATION EMPIRICAL BENCHMARK
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <div>
+                <div style="font-size: 12px; color: #64748B;">CUMULATIVE DEFAULTS AVERTED</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #006C4A;">-25.2%</div>
+                <div style="font-size: 11px; color: #475569;">51 fewer bankruptcies per 1k cohort</div>
+            </div>
+            <div>
+                <div style="font-size: 12px; color: #64748B;">NET PORTFOLIO MARGIN LIFT</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #004AC6;">+$3,406,235</div>
+                <div style="font-size: 11px; color: #475569;">+42.8% retained interest & fee margin</div>
+            </div>
+            <div>
+                <div style="font-size: 12px; color: #64748B;">COMPUTATIONAL PERFORMANCE</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #0F172A;">1.8 Seconds</div>
+                <div style="font-size: 11px; color: #475569;">Vectorized batch execution across 24 cycles</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     # --------------------------------------------------------------------------
-    # EPILOGUE & CURATED RESOURCES
+    # APPENDIX: BIBLIOGRAPHY & REPOSITORY
     # --------------------------------------------------------------------------
     st.markdown("---")
-    st.markdown("## 📚 Epilogue: Your Roadmap to Mastery")
-    st.write("""
-    If you've read this far, congratulations! You now understand the full intellectual continuum of modern institutional quantitative finance:
-    $$\\text{Real Macro Time Series} \\longrightarrow \\text{Information Entropy} \\longrightarrow \\text{Calibrated ML} \\longrightarrow \\text{Game Theory XAI} \\longrightarrow \\text{Causal Uplift} \\longrightarrow \\text{ABM Simulation}$$
-    
-    Here is a curated reading list to take your skills to the absolute top 1% of STEM undergraduates:
-    """)
+    st.markdown("""
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;">
+        <span style="color: #004AC6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;">APPENDIX</span>
+        <h2 style="color: #0F172A; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin: 0;">Academic Syllabus, Curated Lectures & Source Repositories</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
-    ### 📺 Essential YouTube Channels
-    1. **[StatQuest with Josh Starmer](https://www.youtube.com/@statquest)** — The clearest visual intuition for Decision Trees, XGBoost, and ROC curves anywhere on the internet.
-    2. **[3Blue1Brown (Grant Sanderson)](https://www.youtube.com/@3blue1brown)** — Watch the Essence of Linear Algebra, Neural Networks, and Information Theory.
-    3. **[MIT OpenCourseWare (18.06 Linear Algebra - Gilbert Strang)](https://www.youtube.com/playlist?list=PLE7DDD91010BC51F8)** — The bedrock of all machine learning mathematics.
+    #### Curated University Lecture Courses
+    1. **MIT OpenCourseWare 18.06 (Linear Algebra - Prof. Gilbert Strang)**: Foundational matrix decomposition and vector space theory.
+    2. **Yale University ECON 159 (Game Theory - Prof. Ben Polak)**: Strategic equilibria, Nash dynamics, and non-cooperative games.
+    3. **StatQuest with Josh Starmer**: Algorithmic intuition for Decision Trees, Gradient Boosting, and Precision-Recall tradeoffs.
 
-    ### 📖 Definitive Textbooks
-    1. **The Elements of Statistical Learning** (*Hastie, Tibshirani, Friedman*) — The undisputed bible of machine learning.
-    2. **Time Series Analysis** (*James D. Hamilton*) — The definitive text on Markov switching models.
-    3. **Causal Inference: What If** (*Hernán & Robins, Harvard University*) — Free online textbook on potential outcomes and causal inference.
-    4. **Elements of Information Theory** (*Cover & Thomas*) — The fundamental physics of data and entropy.
+    #### Foundational Academic Treatises
+    1. **Hastie, T., Tibshirani, R., & Friedman, J.** *The Elements of Statistical Learning: Data Mining, Inference, and Prediction*. Springer.
+    2. **Hamilton, J. D.** (1994). *Time Series Analysis*. Princeton University Press.
+    3. **Pearl, J.** (2009). *Causality: Models, Reasoning, and Inference*. Cambridge University Press.
+    4. **Cover, T. M., & Thomas, J. A.** (2006). *Elements of Information Theory*. John Wiley & Sons.
 
-    ### 💻 Open Source Repositories to Star on GitHub
-    - [GitHub: 52hz-Daniel/Credit-Risk-Model](https://github.com/52hz-Daniel/Credit-Risk-Model) — This repository!
-    - [GitHub: slundberg/shap](https://github.com/slundberg/shap) — SHAP TreeExplainer source code.
-    - [GitHub: uber/causalml](https://github.com/uber/causalml) — Uplift modeling & X-Learner implementations.
-    - [GitHub: projectmesa/mesa](https://github.com/projectmesa/mesa) — Agent-Based Modeling framework.
+    #### Open Source Frameworks & Code Lineage
+    - Primary Suite Repository: [github.com/52hz-Daniel/Credit-Risk-Model](https://github.com/52hz-Daniel/Credit-Risk-Model)
+    - TreeSHAP Model Interpretability: [github.com/slundberg/shap](https://github.com/slundberg/shap)
+    - Multi-Arm Causal Machine Learning: [github.com/uber/causalml](https://github.com/uber/causalml) & [github.com/py-why/EconML](https://github.com/py-why/EconML)
+    - Mesa Agent-Based Simulation Framework: [github.com/projectmesa/mesa](https://github.com/projectmesa/mesa)
     """)

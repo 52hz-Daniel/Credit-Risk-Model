@@ -89,7 +89,8 @@ selected_tab = st.sidebar.radio(
         "1. Head-to-Head Model Evaluation",
         "2. Macro Regimes & Stress Testing",
         "3. Information Gain & Entropy",
-        "4. OSFI E-23 SHAP Explainability"
+        "4. OSFI E-23 SHAP Explainability",
+        "5. Causal AI Intervention (X-Learner Uplift)"
     ]
 )
 
@@ -377,3 +378,135 @@ elif selected_tab == "4. OSFI E-23 SHAP Explainability":
         )
         fig_glob.update_layout(yaxis=dict(autorange="reversed"), template="plotly_dark", height=500)
         st.plotly_chart(fig_glob, use_container_width=True)
+
+# ---------------------------------------------------------
+# TAB 5: Causal AI Intervention (X-Learner Uplift)
+# ---------------------------------------------------------
+elif selected_tab == "5. Causal AI Intervention (X-Learner Uplift)":
+    st.title("🎯 Causal AI Intervention Engine & Uplift Optimization (Phase 7)")
+    st.write(
+        "Transitioning from **Prediction** (*Who is risky?*) to **Prescription** (*What action minimizes default risk?*). "
+        "Implements a **Multi-Arm X-Learner** (Künzel et al. 2019) estimating the Conditional Average Treatment Effect (CATE) "
+        "$\\\\tau_{a,0}(x) = \\\\mathbb{E}[Y(a) - Y(0) \\\\mid X=x]$ for proactive credit strategy."
+    )
+    
+    causal_engine_path = SAVED_MODELS_DIR / "causal_xlearner.joblib"
+    if not causal_engine_path.exists():
+        st.warning("Causal X-Learner engine artifact not found. Please train it first.")
+    else:
+        from models.causal_engine import MultiArmXLearner
+        causal_engine = MultiArmXLearner.load(causal_engine_path)
+        
+        causal_sub1, causal_sub2 = st.tabs(["Individual Customer Intervention Matrix", "Portfolio-Wide Prescriptive Allocation"])
+        
+        with causal_sub1:
+            st.subheader("Simulate Intervention for an Audited Customer")
+            customer_ids = test_payload["customer_ids"][:50].tolist()
+            selected_cust_id = st.selectbox("Select Customer ID for Policy Prescription", customer_ids, key="causal_cust_select")
+            
+            cust_idx = customer_ids.index(selected_cust_id)
+            X_test_row = test_payload["X_macro_test"].iloc[cust_idx:cust_idx+1]
+            
+            prescription_df = causal_engine.prescribe_action(X_test_row)
+            row = prescription_df.iloc[0]
+            
+            rec_action = row["recommended_action"]
+            st.success(f"**Recommended Prescriptive Action:** **{rec_action}**")
+            
+            # Counterfactual Matrix Table
+            matrix_data = [
+                {
+                    "Treatment Action": "Arm 0: Do Nothing (Control)",
+                    "Predicted 90d Default Risk": f"{row['pd_control']:.2%}",
+                    "CATE Delta (Risk Shift)": "0.00% (Baseline)",
+                    "Uplift (-CATE)": "0.00%",
+                    "Strategy Recommendation": "🟢 Recommended" if rec_action == "Do Nothing (Control)" else "⚪ Alternate"
+                },
+                {
+                    "Treatment Action": "Arm 1: Limit Cut 20%",
+                    "Predicted 90d Default Risk": f"{row['pd_limit_cut']:.2%}",
+                    "CATE Delta (Risk Shift)": f"{row['tau_limit_cut']:+.2%}",
+                    "Uplift (-CATE)": f"{row['uplift_limit_cut']:+.2%}",
+                    "Strategy Recommendation": "🟢 Recommended" if rec_action == "Limit Cut 20%" else "⚪ Alternate"
+                },
+                {
+                    "Treatment Action": "Arm 2: Payment Holiday",
+                    "Predicted 90d Default Risk": f"{row['pd_payment_holiday']:.2%}",
+                    "CATE Delta (Risk Shift)": f"{row['tau_payment_holiday']:+.2%}",
+                    "Uplift (-CATE)": f"{row['uplift_payment_holiday']:+.2%}",
+                    "Strategy Recommendation": "🟢 Recommended" if rec_action == "Payment Holiday" else "⚪ Alternate"
+                }
+            ]
+            
+            st.dataframe(pd.DataFrame(matrix_data), use_container_width=True)
+            
+            # Counterfactual comparison chart
+            fig_counter = go.Figure()
+            actions = ["Do Nothing", "Limit Cut 20%", "Payment Holiday"]
+            pds = [row["pd_control"] * 100, row["pd_limit_cut"] * 100, row["pd_payment_holiday"] * 100]
+            colors = ["#38BDF8", "#F59E0B", "#10B981"]
+            
+            fig_counter.add_trace(go.Bar(
+                x=actions,
+                y=pds,
+                text=[f"{p:.1f}%" for p in pds],
+                textposition="auto",
+                marker_color=colors
+            ))
+            fig_counter.update_layout(
+                title=f"Potential Outcomes Comparison for Customer #{selected_cust_id} (Expected Default Rate)",
+                xaxis_title="Intervention Strategy",
+                yaxis_title="Expected Default Probability (%)",
+                template="plotly_dark",
+                height=380
+            )
+            st.plotly_chart(fig_counter, use_container_width=True)
+            
+        with causal_sub2:
+            st.subheader("Portfolio-Wide Prescriptive Allocation")
+            st.write("Evaluating the X-Learner across a 1,000-borrower holdout sample to determine macro strategy allocation.")
+            
+            sample_X = test_payload["X_macro_test"].head(1000)
+            sample_prescriptions = causal_engine.prescribe_action(sample_X)
+            
+            action_counts = sample_prescriptions["recommended_action"].value_counts().reset_index()
+            action_counts.columns = ["Action", "Customer Count"]
+            
+            col_a, col_b = st.columns([1, 1])
+            with col_a:
+                fig_pie = px.pie(
+                    action_counts,
+                    names="Action",
+                    values="Customer Count",
+                    title="Optimal Strategy Distribution across Portfolio",
+                    color="Action",
+                    color_discrete_map={
+                        "Do Nothing (Control)": "#38BDF8",
+                        "Limit Cut 20%": "#F59E0B",
+                        "Payment Holiday": "#10B981"
+                    },
+                    hole=0.4
+                )
+                fig_pie.update_layout(template="plotly_dark", height=400)
+                st.plotly_chart(fig_pie, use_container_width=True)
+                
+            with col_b:
+                st.markdown("#### Strategic Portfolio Insights")
+                st.write(
+                    "- **Selective Forbearance (Payment Holiday)**: Automatically allocated to cash-strapped accounts where a credit limit cut would trigger an immediate liquidity default.\n"
+                    "- **Selective Line Reductions (Limit Cut 20%)**: Targeted at rising-risk borrowers with high utilization but sufficient cash buffer, effectively reducing bank exposure.\n"
+                    "- **Do Nothing (Control)**: Preserves customer relationship and interest income for low-risk accounts without triggering competitor attrition."
+                )
+                mean_p0 = sample_prescriptions["pd_control"].mean()
+                mean_p_opt = sample_prescriptions[["pd_control", "pd_limit_cut", "pd_payment_holiday"]].min(axis=1).mean()
+                st.metric(
+                    "Average Portfolio Risk under Blanket Control",
+                    f"{mean_p0:.2%}"
+                )
+                st.metric(
+                    "Optimized Portfolio Risk under Causal Strategy",
+                    f"{mean_p_opt:.2%}",
+                    delta=f"{(mean_p_opt - mean_p0)*100:.2f}% Risk Reduction",
+                    delta_color="normal"
+                )
+

@@ -48,6 +48,15 @@ def run_acceptance_tests():
     assert len(test_payload["y_test"]) == 6000, f"Expected 6,000 test cases, got {len(test_payload['y_test'])}"
     logger.info("Test 4 Passed: Test evaluation payload verified (N=6,000 holdout accounts)")
     
+    # 5. Causal Engine (X-Learner) Acceptance
+    from models.causal_engine import MultiArmXLearner
+    causal_engine = MultiArmXLearner.load(SAVED_MODELS_DIR / "causal_xlearner.joblib")
+    sample_recs = causal_engine.prescribe_action(test_payload["X_macro_test"].head(100))
+    assert "recommended_action" in sample_recs.columns, "recommended_action missing"
+    assert len(sample_recs) == 100, "Prescription length mismatch"
+    assert sample_recs["pd_control"].min() >= 0.0 and sample_recs["pd_control"].max() <= 1.0, "PD outside [0, 1]"
+    logger.info("Test 5 Passed: Multi-Arm X-Learner causal engine validated on holdout data")
+    
     logger.info("ALL ACCEPTANCE CRITERIA SUCCESSFULLY PASSED!")
     return True
 

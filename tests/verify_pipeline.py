@@ -57,6 +57,23 @@ def run_acceptance_tests():
     assert sample_recs["pd_control"].min() >= 0.0 and sample_recs["pd_control"].max() <= 1.0, "PD outside [0, 1]"
     logger.info("Test 5 Passed: Multi-Arm X-Learner causal engine validated on holdout data")
     
+    # 6. Retail Game Theory Acceptance
+    from models.retail_game_theory import RetailGameTheoryOptimizer
+    optimizer = RetailGameTheoryOptimizer(causal_engine=causal_engine)
+    game_results = optimizer.get_optimal_strategy(test_payload["X_macro_test"].head(50))
+    assert "optimal_strategy" in game_results.columns, "optimal_strategy missing"
+    assert "optimal_profit" in game_results.columns, "optimal_profit missing"
+    assert len(game_results) == 50, "Game theory results length mismatch"
+    logger.info("Test 6 Passed: Retail Game Theory competitor optimizer validated")
+
+    # 7. ABM 24-Month Simulation Acceptance
+    abm_payload = joblib.load(SAVED_MODELS_DIR / "abm_simulation_results.joblib")
+    assert "df_traditional" in abm_payload and "df_causal" in abm_payload, "ABM trajectory missing"
+    summary = abm_payload["summary"]
+    assert summary["causal_defaults"] < summary["traditional_defaults"], "Causal AI must achieve lower defaults"
+    assert summary["net_profit_lift"] > 0, "Causal AI must generate positive economic profit lift"
+    logger.info(f"Test 7 Passed: ABM Simulation verified (-{summary['default_reduction_pct']:.1%} defaults, +${summary['net_profit_lift']:,.0f} profit lift)")
+    
     logger.info("ALL ACCEPTANCE CRITERIA SUCCESSFULLY PASSED!")
     return True
 

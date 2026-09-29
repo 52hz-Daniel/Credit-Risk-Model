@@ -1,16 +1,4 @@
-from pathlib import Path
-import streamlit as st
-
-def render_tutorial_page():
-    """
-    Renders the tutorial / educational page using the exact copy from EQUITY-TWIN-page-copy.md.
-    """
-    page_copy_path = Path(__file__).resolve().parent.parent / "EQUITY-TWIN-page-copy.md"
-    if page_copy_path.exists():
-        with open(page_copy_path, "r", encoding="utf-8") as f:
-            content = f.read()
-    else:
-        content = """# Can a credit-risk model help a lender make better decisions?
+# Can a credit-risk model help a lender make better decisions?
 
 When a credit-card customer starts to struggle, a lender has several choices: leave the account as it is, lower the credit limit, or offer temporary payment relief. Each choice may affect both the customer and the lender. **This project asks whether we can estimate the customer's payment risk, understand the reasons for that estimate, and test possible responses before anyone uses them in practice.**
 
@@ -78,5 +66,3 @@ The 24-month simulation compares policies for virtual customers. Figures such as
 - **Governance:** Can reviewers trace the data, assumptions, model versions, decisions, and monitoring results? OSFI's [Guideline E-23](https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/guideline-e-23-model-risk-management-2027) is a reference for that work; institutional compliance requires much more than a dashboard.
 
 **Takeaway:** The demonstrated result is a test-set comparison of payment-risk models. The economic scenarios, proposed actions, and portfolio outcomes are useful experiments, with stronger evidence needed before they can guide real lending.
-"""
-    st.markdown(content)

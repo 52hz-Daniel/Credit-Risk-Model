@@ -94,6 +94,31 @@ st.markdown("""
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.9em !important;
     }
+
+    /* Markdown Tables Styling */
+    [data-testid="stMarkdownContainer"] table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 16px 0 !important;
+        background-color: #FFFFFF !important;
+    }
+
+    [data-testid="stMarkdownContainer"] th {
+        background-color: #F1F5F9 !important;
+        color: #0F172A !important;
+        font-weight: 600 !important;
+        padding: 10px 14px !important;
+        border: 1px solid #CBD5E1 !important;
+        font-size: 13px !important;
+    }
+
+    [data-testid="stMarkdownContainer"] td {
+        padding: 10px 14px !important;
+        border: 1px solid #E2E8F0 !important;
+        color: #334155 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
     
     /* Top Header Bar */
     .top-header-bar {
@@ -304,10 +329,10 @@ with col_act1:
             {status_badge}
         </div>
         <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #0F172A;">
-            Undergrad STEM Math & AI Tutorial
+            Tutorial: Can a Credit-Risk Model Help Lenders?
         </div>
         <div style="font-size: 12px; color: #64748B; margin-top: 4px; line-height: 1.4;">
-            Why naive models trigger liquidity spirals & demystifying every math formula from first principles.
+            Evaluating payment risk, holdout benchmark quality, and what a lender must verify before real use.
         </div>
     </div>
     """, unsafe_allow_html=True)
